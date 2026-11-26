@@ -100,10 +100,27 @@ body {
 /* =============================================================
    5. Buttons
    ============================================================= */
-.btn {
+
+.btns {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin: 6px 0 10px;
+    position: relative;
+    z-index: 5;
+}
+
+.btn {
+    display: inline-block;
+    padding: 11px 26px;
+    border-radius: 10px;
+    font-size: 20px;
+    background: linear-gradient(#e0102a, var(--dk));
+    border: 1px solid #ff3b4d;
+    box-shadow: 0 4px 18px #d0021b55;
+    cursor: pointer;
+    position: relative;
+    z-index: 6;
     color: #fff;
     text-decoration: none;
     white-space: nowrap;
@@ -154,7 +171,45 @@ body {
    The dashed box shows the file name. When the image file exists in
    assets/ it covers the box (onload in the HTML adds .has-img).
    ============================================================= */
-.ph {
+
+.life {
+    background: radial-gradient(circle at 20% 0, #5a0008, #000 60%);
+}
+
+.girl {
+    position: absolute;
+    right: 0;
+    top: -10px;
+    width: min(40%, 260px);
+}
+.life .wrap > *:not(.girl) {
+  position: relative;
+  z-index: 2;
+}
+
+.life p:not(.eyebrow) {
+  color: #e5e5e5;
+}
+
+.girl {
+  z-index: 1;
+}
+
+.cards {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 30px 4px 10px;
+    scroll-snap-type: x mandatory;
+    margin-top: 20px;
+}
+
+.card {
+    flex: 0 0 230px;
+    scroll-snap-align: start;
+    background: #1a1a1a;
+    border: 1px solid var(--red);
+    border-radius: 20px;
     overflow: hidden;
     background: repeating-linear-gradient(45deg, #1b1b1b 0 8px, #242424 8px 16px);
     outline: 1px dashed rgba(255, 59, 77, .6);
@@ -208,8 +263,108 @@ body {
 .tk-u { position: relative; flex: none; width: 400.94px; height: 25.06px; }
 .tk-t {
     position: absolute;
-    top: 7.3px;
-    font: 700 7.8px/10px 'Roboto Mono', monospace;
+    right: 0;
+    left: 0;
+    top: 70px;
+    width: 100%;
+    max-width: 1000px;
+    margin: auto;
+    opacity: .9;
+}
+
+.refer {
+    padding-top: 70px;
+}
+
+.refer .wrap > p,
+.refer h2 {
+    position: relative;
+    z-index: 1;
+}
+
+.refer .eyebrow.flame {
+    margin-top: 120px;
+}
+
+.posts {
+    display: flex;
+    gap: 22px;
+    flex-wrap: wrap;
+    margin-top: 14px;
+}
+
+.ph {
+    background: #1c1c1c;
+    border: 1px dashed #ff3b4d88;
+    color: #f5f5f5
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 14px;
+    border-radius: 12px;
+}
+
+.poster {
+    width: 270px;
+    min-height: 300px;
+    background: #151515;
+}
+
+.poster b {
+    font: 400 34px/1 'Bebas Neue', sans-serif;
+    color: #eee;
+    margin-bottom: 12px;
+}
+
+.lanyard {
+    width: 230px;
+    min-height: 300px;
+    background: #fff;
+    color: #000;
+    transform: rotate(3deg);
+}
+
+.lanyard b {
+    font-size: 30px;
+    line-height: 1;
+    font-style: italic;
+    margin: 10px 0;
+}
+
+.ph-bg {
+    background: radial-gradient(circle at 70% 60%, #3a0008, #000 70%);
+}
+
+.note {
+    opacity: 0.95;
+    display: block;
+    font-size: 16px;
+}
+
+.chat {
+    float: right;
+    background: #fff;
+    color: #000;
+    border: 2px solid var(--red);
+    border-radius: 14px;
+    padding: 14px;
+    max-width: 210px;
+    font-size: 17px;
+    margin: 0 0 20px 14px;
+}
+
+.small {
+    background: linear-gradient(#7a0010aa, #000d);
+}
+
+.mentors .wrap,
+.exec .wrap {
+    padding-left: max(22px, 12%);
+}
+
+.note-pad {
+    background: #f6f3ea;
     color: #000;
     white-space: nowrap;
 }
@@ -368,21 +523,11 @@ body {
 .feat .t { font-size: 12px; }
 .vl { position: absolute; width: 1px; height: 34px; background: #fff; }
 
-/* =============================================================
-   15. Desktop, laptop and tablet screens
-   script.js picks the page scale for each screen size.
-   Here I only add the look around the page.
-   ============================================================= */
-@media (min-width: 601px) and (max-width: 899px) {
-    body { padding: 28px 0; }
-
-    .stage {
-        border-radius: 18px;
-        box-shadow:
-            0 0 0 1px rgba(255, 255, 255, .07),
-            0 0 140px rgba(213, 21, 34, .28),
-            0 30px 80px rgba(0, 0, 0, .6);
-    }
+footer {
+    text-align: center;
+    padding: 30px;
+    font-size: 16px;
+    opacity: 0.95;
 }
 
 /* Mouse users: buttons react on hover, and the card rows can be dragged */
