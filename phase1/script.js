@@ -1,237 +1,114 @@
 /* =============================================================
-   1. Card data
+   1. Fit the 393px canvas to the phone screen
+   I scale the whole page so it always fills the screen width.
    ============================================================= */
+const stage = document.getElementById("stage");
+const page = document.getElementById("page");
 
-const cardData = {
-    life: [
-        [
-            "Finding Direction",
-            "Not sure whether university, work or another path is right for you? Explore your options before deciding what comes next.",
-            "Explore your options"
-        ],
-        [
-            "Beyond the degree",
-            "Want to build practical skills without following the traditional degree route? Discover another way to start learning.",
-            "Explore learning Paths"
-        ],
-        [
-            "Ready to work?",
-            "A month-long, hands-on programme to build a minimum viable portfolio.",
-            "Start building"
-        ]
-    ],
-    selp: [
-        [
-            "Start small",
-            "Maybe it's a proof of concept, a piece of research or a clearly defined deliverable that's been sitting on your list. Start with one piece of work, scoped over two weeks.",
-            "Explore your options"
-        ],
-        [
-            "Need an extra pair of hands?",
-            "Your team's workload is growing, and you need someone dedicated to help keep things moving.",
-            "Explore learning Paths"
-        ],
-        [
-            "Need a fresh view?",
-            "You're wondering where to begin or need the right partner. Start exploring.",
-            "Explore options"
-        ]
-    ],
-    hot: [
-        [
-            "UX/UI Design Bootcamp",
-            "Try it first. Get hands on with real world projects and see if its for you.",
-            "Explore",
-            "Trending",
-            "2 weeks",
-            "R 1 900",
-            "Fully credited if you decide to continue"
-        ],
-        [
-            "Selp Sprint",
-            "A Two week sprint focused on one deliverable such as a proof of concept.",
-            "Explore",
-            "Popular",
-            "2 weeks",
-            "R 3 400",
-            "Fully credited if you decide to continue"
-        ]
-    ]
-};
+const DESIGN_WIDTH = 393;
+const DESIGN_HEIGHT = 6198;
+
+function fitPage() {
+    const screenWidth = document.documentElement.clientWidth;
+
+    // on phones I scale to the screen width, on big screens I keep the real size
+    const scale = screenWidth <= 600 ? screenWidth / DESIGN_WIDTH : 1;
+
+    page.style.transform = `scale(${scale})`;
+    stage.style.width = `${DESIGN_WIDTH * scale}px`;
+    stage.style.height = `${DESIGN_HEIGHT * scale}px`;
+}
+
+fitPage();
+window.addEventListener("resize", fitPage);
 
 /* =============================================================
-   2. Render cards
+   2. Navigation links and empty "#" buttons
    ============================================================= */
+document.querySelectorAll(".nav a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
 
-const cardContainers = document.querySelectorAll("[data-cards]");
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
+});
 
-cardContainers.forEach((container) => {
-    const sectionName = container.dataset.cards;
-    const cards = cardData[sectionName];
-
-    if (!cards) {
-        return;
-    }
-
-    container.innerHTML = cards
-        .map((card, index) => {
-            const [title, description, action, tag, duration, price, credit] = card;
-
-            const cardMarker = tag
-                ? `<span class="tag">${tag}</span>`
-                : `<i>${index + 1}</i>`;
-
-            const cardDetails = duration
-                ? `
-                    <small>
-                        <span>◔ ${duration}</span>
-                        <span>◎ ${price}</span>
-                    </small>
-                    <p style="min-height: 0; font-size: 12px">${credit}</p>
-                `
-                : "";
-
-            return `
-                <div class="card">
-                    <img src="assets/card.png" alt="">
-
-                    ${cardMarker}
-
-                    <h4>${title}</h4>
-                    <p>${description}</p>
-
-                    ${cardDetails}
-
-                    <a class="btn" href="#">${action}</a>
-                </div>
-            `;
-        })
-        .join("");
+// the other buttons do not go anywhere yet, so I stop the page jumping to the top
+document.querySelectorAll('a.btn[href="#"]').forEach((button) => {
+    button.addEventListener("click", (event) => event.preventDefault());
 });
 
 /* =============================================================
    3. Prize wheel
+   The 8 slices go clockwise, starting with the slice left of the top pointer.
    ============================================================= */
-
 const prizeOptions = [
     "Portfolio clinic",
+    "a Gift box",
     "Free bootcamp",
     "Sorry, next time",
     "100K",
-    "20% off Selp Sprint",
-    "Gift box"
+    "20% off SelP Sprint",
+    "a Gift box",
+    "a Gift box"
 ];
 
-const wheel = document.getElementById("wheel");
+const disc = document.getElementById("disc");
 const wheelResult = document.getElementById("result");
+const sliceAngle = 360 / prizeOptions.length;
 
-const segmentAngle = 360 / prizeOptions.length;
-
-wheel.style.background = `conic-gradient(${prizeOptions
-    .map((_, index) => {
-        const start = index * segmentAngle;
-        const end = (index + 1) * segmentAngle;
-        const color = index % 2 ? "#5a0008" : "#b8001a";
-
-        return `${color} ${start}deg ${end}deg`;
-    })
-    .join(",")})`;
-
-wheel.innerHTML = prizeOptions
-    .map((prize, index) => {
-        const position = index * segmentAngle + segmentAngle / 2 - 90;
-
-        return `<span style="transform: rotate(${position}deg) translate(30px, -8px)">${prize}</span>`;
-    })
-    .join("");
-
-let currentWheelRotation = 0;
-let isWheelSpinning = false;
+let currentRotation = 0;
+let isSpinning = false;
 
 function spinWheel() {
-    if (isWheelSpinning) {
+    if (isSpinning) {
         return;
     }
 
-    isWheelSpinning = true;
+    isSpinning = true;
     wheelResult.textContent = "";
 
+    // I pick the winning slice first, then turn the wheel so it stops under the pointer
     const winningIndex = Math.floor(Math.random() * prizeOptions.length);
-    const prizeCenter = winningIndex * segmentAngle + segmentAngle / 2;
+    const sliceCenter = -sliceAngle / 2 + winningIndex * sliceAngle;
+    const stopAngle = (360 - (sliceCenter % 360)) % 360;
 
-    currentWheelRotation +=
-        360 * 5 +
-        (360 - prizeCenter) -
-        (currentWheelRotation % 360);
-
-    wheel.style.transform = `rotate(${currentWheelRotation}deg)`;
+    currentRotation = currentRotation - (currentRotation % 360) + 360 * 5 + stopAngle;
+    disc.style.transform = `rotate(${currentRotation}deg)`;
 
     window.setTimeout(() => {
-        isWheelSpinning = false;
+        isSpinning = false;
 
-        if (winningIndex === 2) {
-            wheelResult.textContent = "Sorry, next time!";
-        } else {
-            wheelResult.textContent = `You won: ${prizeOptions[winningIndex]}!`;
-        }
+        wheelResult.textContent = winningIndex === 3
+            ? "Sorry, next time!"
+            : `You won ${prizeOptions[winningIndex]}!`;
     }, 4600);
 }
 
-["spinBtn", "spinBtn2"].forEach((buttonId) => {
-    const button = document.getElementById(buttonId);
+document.getElementById("spinBtn").addEventListener("click", spinWheel);
 
-    if (button) {
+document.querySelectorAll("a.btn").forEach((button) => {
+    if (button.textContent.trim() === "Spin the wheel") {
         button.addEventListener("click", spinWheel);
     }
 });
 
 /* =============================================================
-   4. Limited-time offer countdown
+   4. Limited time offer countdown (1 day, 12 hours, 45 mins, 30 secs)
    ============================================================= */
-
-const countdownEnd = Date.now() + (
-    (24 + 12) * 60 * 60 +
-    45 * 60 +
-    30
-) * 1000;
-
-function getCountdownElement(id) {
-    return document.getElementById(id);
-}
+const countdownEnd = Date.now() + (((24 + 12) * 60 + 45) * 60 + 30) * 1000;
 
 function updateCountdown() {
-    const remainingSeconds = Math.max(
-        0,
-        Math.floor((countdownEnd - Date.now()) / 1000)
-    );
+    const secondsLeft = Math.max(0, Math.floor((countdownEnd - Date.now()) / 1000));
 
-    getCountdownElement("d").textContent = Math.floor(remainingSeconds / 86400);
-    getCountdownElement("h").textContent = Math.floor((remainingSeconds % 86400) / 3600);
-    getCountdownElement("m").textContent = Math.floor((remainingSeconds % 3600) / 60);
-    getCountdownElement("s").textContent = remainingSeconds % 60;
+    document.getElementById("d").textContent = Math.floor(secondsLeft / 86400);
+    document.getElementById("h").textContent = Math.floor((secondsLeft % 86400) / 3600);
+    document.getElementById("m").textContent = Math.floor((secondsLeft % 3600) / 60);
+    document.getElementById("s").textContent = secondsLeft % 60;
 }
 
 updateCountdown();
 window.setInterval(updateCountdown, 1000);
-
-/* =============================================================
-   5. Section reveal animation
-   ============================================================= */
-
-const revealObserver = new IntersectionObserver(
-    (entries) => {
-        entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add("in");
-            }
-        });
-    },
-    { threshold: 0.1 }
-);
-
-const revealTargets = document.querySelectorAll(".sec .wrap");
-
-revealTargets.forEach((target) => {
-    target.classList.add("rv");
-    revealObserver.observe(target);
-});

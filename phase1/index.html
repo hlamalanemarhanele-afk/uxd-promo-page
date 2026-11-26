@@ -3,373 +3,274 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
     <title>UluntuXD – Your next big break starts here</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0%25' stop-color='%23ff1a1a'/%3E%3Cstop offset='100%25' stop-color='%23890004'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='%23120405'/%3E%3Crect x='1.5' y='1.5' width='61' height='61' rx='12.5' fill='none' stroke='%23890004' stroke-width='2'/%3E%3Ctext x='32' y='41' text-anchor='middle' font-family='sans-serif' font-weight='800' font-size='24' letter-spacing='-1' fill='url(%23g)'%3EUXD%3C/text%3E%3C/svg%3E">
 
-    <!-- Fonts -->
+    <!-- Fonts used in the Figma file (Figma Hand and the receipt fonts are swapped for close Google fonts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,600;1,700&family=Bebas+Neue&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Caveat:wght@400;700&family=Inter:wght@400&family=Khula:wght@600&family=Roboto+Mono:wght@700&family=Sofia+Sans+Extra+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,700&display=swap" rel="stylesheet">
 
-    <!-- Styles -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Navigation -->
-    <header class="nav">
-        <a href="#counter">
-            <img src="assets/logo.svg" alt="UluntuXD" height="22">
-        </a>
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <!-- red metal gradient used for headline art -->
+    <linearGradient id="gHead" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0.1" stop-color="#650004"/><stop offset="0.35" stop-color="#a60002"/>
+      <stop offset="0.6" stop-color="#f00"/><stop offset="0.86" stop-color="#a60002"/><stop offset="1" stop-color="#7a0003"/>
+    </linearGradient>
+    <!-- fire icon gradient -->
+    <linearGradient id="gFire" x1="20" y1="12.874" x2="4.346" y2="10.525" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#650004"/><stop offset=".2356" stop-color="#A60002"/><stop offset=".5" stop-color="#F00"/>
+      <stop offset=".7452" stop-color="#A60002"/><stop offset="1" stop-color="#650004"/>
+    </linearGradient>
+    <!-- gradient for the small 11px icons -->
+    <linearGradient id="gm11" x1="10" y1="5" x2="1" y2="4" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#650004"/><stop offset=".2356" stop-color="#A60002"/><stop offset=".5" stop-color="#F00"/>
+      <stop offset=".7452" stop-color="#A60002"/><stop offset="1" stop-color="#650004"/>
+    </linearGradient>
 
-        <nav aria-label="Main navigation">
-            <a href="#counter">Counter</a>
-            <a href="#referrals">Referrals</a>
-            <a href="#selp">SELP</a>
-            <a href="#solve">Solve</a>
-        </nav>
-    </header>
+    <symbol id="i-fire" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M9 12.0001L8.10557 13.789C8.83273 14.1526 9.70762 14.0398 10.3188 13.5037C10.9254 12.9716 11.1525 12.1276 10.8961 11.3637L10.895 11.3604C10.8941 11.3573 10.8927 11.3529 10.8911 11.3473C10.869 11.2731 10.7913 10.9881 10.7471 10.5852C10.6872 10.0389 10.6917 9.32141 10.9157 8.57482C11.3102 7.2597 11.8572 6.306 12.4049 5.61868C12.7587 6.85086 13.4053 8.23388 14.5858 9.41434C14.8113 9.63983 15.0573 9.86383 15.3107 10.0945C16.5658 11.237 18 12.5426 18 15.0001C18 17.6056 15.4622 20.0001 12 20.0001C8.72613 20.0001 6 17.7737 6 14.0001C6 13.426 6.09373 12.733 6.24353 11.9963C6.49464 12.3949 6.76542 12.719 7.02329 12.9768C7.27363 13.2272 7.50868 13.4122 7.69752 13.5429C7.82774 13.6331 7.96216 13.717 8.10381 13.7881C8.10381 13.7881 8.10557 13.789 9 12.0001ZM8.96162 8.13316C8.81983 8.6449 8.74994 9.13837 8.72522 9.59172C8.64919 10.9856 9 12.0001 9 12.0001C9 12.0001 8 11.5001 7.5 10.0001C7.3353 9.50602 7.11635 8.90342 6.89675 8.3174C6.89054 8.30081 6.884 8.28455 6.87716 8.26862C6.53619 7.47462 5.4352 7.49832 5.1629 8.33824C4.61497 10.0283 4 12.3032 4 14.0001C4 19.0001 7.74745 22.0001 12 22.0001C16.2526 22.0001 20 19.0001 20 15.0001C20 11.5716 17.7959 9.61237 16.5364 8.49284C16.3265 8.30625 16.1429 8.14298 16 8.00013C14.5939 6.59402 14.1521 4.74624 14.0254 3.47473C13.9552 2.7708 13.2759 2.27157 12.6864 2.66256C10.8011 3.9129 9.55753 5.98253 8.96162 8.13316Z"/></symbol>
 
-    <!-- Hero -->
-    <section id="counter" class="hero">
-        <div class="wrap">
-            <h1 class="big">
-                Your next<br>
-                big break <em>starts here.</em>
-            </h1>
+    <symbol id="i-gift" viewBox="0 0 33 33"><g fill="#FEDB8C"><path d="M23.3237 20.5795L20.2368 25.7245C19.0997 27.6196 16.6439 28.2336 14.7488 27.0966L7.88884 22.9807C5.99377 21.8436 5.37979 19.3878 6.51681 17.4927L9.60373 12.3477C9.8867 11.8761 10.5041 11.7218 10.9757 12.0047L12.665 13.0183C13.1366 13.3012 13.291 13.9186 13.008 14.3902L11.3925 17.0828C11.0118 17.7173 11.0135 18.5114 11.3908 19.1459C11.5572 19.4323 11.7904 19.6656 12.0734 19.8353C12.3992 20.0308 12.7817 20.132 13.1778 20.1132L14.3114 20.0703L14.7625 21.0289C15.0746 21.6944 15.7177 22.1385 16.4552 22.1728C17.2012 22.2123 17.8975 21.8487 18.2834 21.2056L19.8937 18.5216C20.1767 18.05 20.7941 17.8956 21.2657 18.1786L22.9807 19.2076C23.4523 19.4905 23.6067 20.1079 23.3237 20.5795Z"/><path d="M27.1825 17.0635L26.668 17.921C26.1021 18.8643 25.1845 19.3633 23.924 18.607L11.0616 10.8897C9.74959 10.1025 9.8096 9.08898 10.3755 8.14573L10.89 7.28824C11.456 6.34499 12.322 5.81505 13.634 6.60222L26.4965 14.3195C27.757 15.0758 27.7484 16.1203 27.1825 17.0635Z"/><path d="M19.7565 10.2761L15.0231 7.43608C14.9219 6.94388 15.2237 6.46025 15.7176 6.33676L17.6659 5.84969C18.1735 5.72278 18.6966 6.03661 18.8235 6.54425L19.7565 10.2761Z"/><path d="M25.0987 13.4816L20.3654 10.6416L24.0972 9.70865C24.6048 9.58174 25.1279 9.89558 25.2548 10.4032L25.7418 12.3514C25.8653 12.8453 25.5806 13.3393 25.0987 13.4816Z"/><path d="M18.6675 16.6201C19.1391 16.9031 19.2935 17.5205 19.0105 17.9921L17.4002 20.6761C16.9886 21.3621 15.9785 21.3158 15.644 20.5903L15.181 19.6128C15.0112 19.2544 14.6425 19.0331 14.2377 19.0468L13.1127 19.0949C12.3204 19.1326 11.8127 18.2683 12.2192 17.5908L13.8398 14.8897C14.1228 14.4181 14.7402 14.2637 15.2118 14.5467L18.6675 16.6201Z"/></g></symbol>
 
-            <p>
-                A new direction. A skill to build.<br>
-                A problem to solve. Let's find your next step.
-            </p>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="#FF0095"><path d="M22 4.84969V16.7397C22 17.7097 21.21 18.5997 20.24 18.7197L19.93 18.7597C18.29 18.9797 15.98 19.6597 14.12 20.4397C13.47 20.7097 12.75 20.2197 12.75 19.5097V5.59969C12.75 5.22969 12.96 4.88969 13.29 4.70969C15.12 3.71969 17.89 2.83969 19.77 2.67969H19.83C21.03 2.67969 22 3.64969 22 4.84969Z"/><path d="M10.71 4.70969C8.87999 3.71969 6.10999 2.83969 4.22999 2.67969H4.15999C2.95999 2.67969 1.98999 3.64969 1.98999 4.84969V16.7397C1.98999 17.7097 2.77999 18.5997 3.74999 18.7197L4.05999 18.7597C5.69999 18.9797 8.00999 19.6597 9.86999 20.4397C10.52 20.7097 11.24 20.2197 11.24 19.5097V5.59969C11.24 5.21969 11.04 4.88969 10.71 4.70969ZM4.99999 7.73969H7.24999C7.65999 7.73969 7.99999 8.07969 7.99999 8.48969C7.99999 8.90969 7.65999 9.23969 7.24999 9.23969H4.99999C4.58999 9.23969 4.24999 8.90969 4.24999 8.48969C4.24999 8.07969 4.58999 7.73969 4.99999 7.73969ZM7.99999 12.2397H4.99999C4.58999 12.2397 4.24999 11.9097 4.24999 11.4897C4.24999 11.0797 4.58999 10.7397 4.99999 10.7397H7.99999C8.40999 10.7397 8.74999 11.0797 8.74999 11.4897C8.74999 11.9097 8.40999 12.2397 7.99999 12.2397Z"/></g></symbol>
 
-            <div class="btns">
-                <a class="btn" href="#">Book a call</a>
-                <a class="btn ghost" href="#life">Explore Options</a>
-            </div>
-        </div>
-    </section>
+    <symbol id="i-door" viewBox="0 0 24 24"><path fill="#FF0095" d="M8.99984 0H9.1575C9.29866 0.0804009 10.876 0.336073 11.1512 0.385535L16.3788 1.32902C17.1825 1.47401 18.3679 1.64815 19.1349 1.83765L19.1395 14.9565L19.1397 19.6102C19.1397 20.3948 19.1686 21.4325 19.1233 22.196C18.1466 22.3525 17.1332 22.5485 16.1569 22.7239L11.2034 23.6149C10.9399 23.663 9.27963 23.9231 9.13587 24H9.0063C8.9768 23.2037 8.99916 22.2816 8.99911 21.474L8.99906 16.7572L9.00054 2.61134L7.44368 2.60848C7.20333 2.61035 6.59965 2.63583 6.39532 2.59784C6.36705 3.14468 6.38728 3.84241 6.38728 4.4025V7.72162L6.38742 17.09C6.38752 18.7463 6.42169 20.5424 6.37629 22.1895C5.87191 22.2077 5.34162 22.1803 4.86035 22.2028C4.89248 21.5701 4.86206 20.6546 4.86204 19.9951L4.86199 15.5305L4.86403 1.05944L8.99777 1.06013C9.00141 0.706763 9.00209 0.353374 8.99984 0ZM10.9184 12.8122C11.7139 12.6101 11.6563 11.2534 10.8125 11.2327C10.0267 11.368 10.058 12.7997 10.9184 12.8122Z"/></symbol>
 
-    <!-- Promotional ticker -->
-    <div class="ticker">
-        <div>
-            <span>LIMITED TIME OFFER -50% OFF ON EVERYTHING • USE DISCOUNT CODE 'ALL50 AT CHECKOUT •</span>
-            <span>LIMITED TIME OFFER -50% OFF ON EVERYTHING • USE DISCOUNT CODE 'ALL50 AT CHECKOUT •</span>
-        </div>
+    <symbol id="i-puzzle" viewBox="0 0 24 24"><g fill="#FF0095"><path d="M3.8555 2.35308C4.89474 2.21724 5.84632 2.95233 5.97732 3.99221C6.10831 5.03208 5.36878 5.9802 4.32832 6.10634C3.29468 6.23166 2.35416 5.49807 2.22402 4.46504C2.09388 3.43201 2.8231 2.48806 3.8555 2.35308Z"/><path d="M13.6689 6.42443C14.4972 6.34823 14.8331 7.99863 15.0034 8.59872C15.1355 9.06464 14.7413 9.14531 14.4057 9.22261C14.1645 9.2782 13.8496 9.36161 13.6274 9.45302C13.4062 9.54403 12.6731 9.80161 12.7865 10.1279C12.8097 10.1954 12.9728 10.3536 13.0329 10.4097C13.9608 11.2153 13.8219 11.9695 12.6728 12.4248C11.7703 12.7878 11.3564 12.1776 11.2919 11.3549C11.2657 11.0206 11.2563 10.6841 10.8301 10.8288C10.18 11.0495 9.73355 11.482 9.18298 11.8561C8.76164 12.1425 8.46476 11.2394 8.32362 10.9503L7.56689 9.40497C7.72001 9.46186 7.88822 9.54213 8.03893 9.61017C8.16633 9.8494 8.29573 10.1256 8.41697 10.3707C8.51569 10.5766 8.88743 11.3934 9.00757 11.5193C9.10339 11.5325 9.2494 11.3931 9.33556 11.3309C9.78748 10.9978 10.6039 10.3582 11.1938 10.4823C11.6989 10.5886 11.5522 11.5626 11.85 12.0649L11.8681 12.0772C12.0259 12.1837 12.1546 12.2086 12.3386 12.1727C12.599 12.1098 13.1235 11.8875 13.2507 11.6509C13.6323 10.912 12.0271 10.4543 12.5037 9.77625C12.884 9.23531 14.0895 8.93435 14.7109 8.80263C14.5773 8.27723 14.3189 7.19468 13.9057 6.8141C13.628 6.62365 13.2813 7.19854 13.0698 7.34437C12.6487 7.63476 12.5239 7.66165 12.0404 7.58336C12.114 7.49747 12.1756 7.40822 12.2411 7.31634C13.0106 7.29019 13.0931 6.60316 13.6689 6.42443Z"/><path d="M11.8881 2.83887C11.9171 2.83941 12.034 2.85272 12.0577 2.87205C12.5541 3.27691 14.1584 5.36177 12.8512 5.61169C12.6312 5.65373 12.2516 5.64734 12.0113 5.74305C11.7784 5.83584 11.6266 6.11981 11.3412 6.03234C11.3394 6.027 11.3376 6.02168 11.3358 6.01634C11.4441 5.38235 12.2753 5.35109 12.7732 5.27358C12.9268 5.24967 12.9836 5.19872 13.0244 5.13661C13.0607 4.5011 12.2948 3.68332 11.9551 3.16488C11.6752 3.2726 11.1463 3.55118 10.8662 3.68998L8.7366 4.74281C7.91493 5.14036 7.07451 5.57147 6.24906 5.95216C6.40176 6.32091 6.6876 6.8599 6.86983 7.23183C6.72562 7.14811 6.55354 7.0755 6.40005 7.00645C6.34431 6.92477 6.28642 6.80208 6.24817 6.72867C5.81106 5.86416 5.72137 5.80723 6.64504 5.3888C6.98765 5.23357 7.68681 4.90552 8.02309 4.69969C8.20173 4.59035 8.46056 3.96818 8.68286 3.74831C8.80759 3.6263 8.97564 3.5587 9.15013 3.56037C9.41306 3.56334 9.5721 3.70073 9.74116 3.87448C10.2266 3.61568 10.7386 3.3878 11.2294 3.13753C11.4351 3.0326 11.6706 2.91237 11.8881 2.83887Z"/><path d="M17.0866 14.5887C17.1176 14.135 17.5354 12.724 17.1333 12.3783C16.9724 12.24 15.9109 12.9104 15.415 12.5046C14.8908 12.0758 14.9392 11.0987 15.2408 10.6207C15.6374 9.99226 16.581 10.545 17.0936 10.5819C17.5481 10.5691 17.1182 8.63497 17.0828 8.35635C17.0729 8.26937 17.1016 8.17475 17.1565 8.08918C17.3555 7.94443 18.4114 7.99318 18.7107 7.99349L21.013 7.99532L22.7021 7.99164C23.0089 7.99084 23.3343 7.98226 23.6396 8.00186C23.8369 8.01454 23.8796 8.06593 24 8.2138V21.3585C23.7987 21.5986 23.7314 21.5786 23.4165 21.5786C22.4581 21.5785 21.4998 21.5766 20.5414 21.5773L14.123 21.5786L11.7649 21.5787C11.4492 21.5786 11.1333 21.5804 10.8176 21.5738C10.7266 21.5719 10.5098 21.5624 10.473 21.4559C10.4356 21.3479 10.4137 21.2003 10.4121 21.0841C10.407 20.7077 10.4098 20.328 10.41 19.9517L10.4112 17.7744L10.4116 15.8629C10.4104 14.8784 10.155 14.6448 11.23 14.4698C14.6639 13.9108 12.8047 15.4351 13.1475 16.3854C13.4426 16.6497 14.1673 16.7071 14.4943 16.497C15.0465 16.142 14.3028 15.2572 14.4435 14.7838C14.4804 14.6597 14.5434 14.5527 14.6643 14.4856C15.2485 14.1876 16.4787 14.4308 17.0866 14.5887ZM15.4971 12.1492C15.6972 12.2922 15.8712 12.3303 16.1098 12.2783C16.6625 12.158 17.4624 11.6555 17.5963 12.5857C17.6884 13.2253 17.5552 13.9186 17.4146 14.5567C18.0349 14.4353 19.1755 14.1673 19.7697 14.5123C19.8736 14.5725 19.9489 14.695 19.9745 14.8229C20.0682 15.2909 19.3984 16.0965 19.8724 16.4723C20.0467 16.6105 20.42 16.6242 20.6416 16.6158C22.1267 16.4354 20.6759 15.2048 21.1294 14.6255C21.5371 14.1048 23.0568 14.4359 23.6705 14.5752C23.6353 13.9249 23.6611 13.0483 23.6611 12.3846L23.6665 8.32611L19.637 8.32389C19.0138 8.32405 18.0036 8.35642 17.4044 8.31885C17.5205 8.97664 17.815 10.1227 17.4652 10.7287C17.1025 11.3571 15.9297 10.2431 15.5074 10.8189C15.2654 11.1489 15.3355 11.7984 15.4971 12.1492ZM17.0567 14.911C16.6924 14.834 14.4212 14.2875 14.799 15.1577C15.3307 16.3824 14.9452 17.0985 13.5444 16.9216C12.4212 16.7741 12.7563 15.7733 13.0224 15.0337C13.1605 14.6447 12.4899 14.6824 12.2673 14.6817C11.7502 14.7093 11.2371 14.7878 10.7354 14.9161L10.7387 19.0157C10.7388 19.6942 10.764 20.5863 10.7282 21.2509C11.9821 21.227 13.3039 21.2554 14.5637 21.2497C15.25 21.2467 16.4052 21.2154 17.0661 21.2601C17.125 20.9549 17.5639 19.0416 17.0729 18.9844C16.8331 18.9565 16.2116 19.3394 15.792 19.2484C15.0088 19.1034 14.9551 18.3376 15.0563 17.7035C15.162 17.0409 15.6366 16.8555 16.2224 16.9794C16.4543 17.0284 16.9786 17.2697 17.1521 17.1894C17.4741 16.8429 17.1714 15.3625 17.0567 14.911ZM23.6613 14.9182C23.105 14.8308 21.9381 14.5289 21.448 14.807C21.3101 14.973 21.581 15.5224 21.6252 15.7472C21.7791 16.53 21.4404 16.9254 20.6741 16.962C19.7676 17.0052 19.1515 16.6868 19.4168 15.6737C19.4782 15.4392 19.6339 15.1301 19.631 14.8874C19.5943 14.6557 18.915 14.6997 18.7424 14.7053C18.3205 14.7286 17.833 14.8331 17.4153 14.9135C17.5202 15.4521 18.0054 17.355 17.1592 17.5633C16.7499 17.664 15.9055 16.9831 15.5149 17.4641C15.3184 17.6985 15.3092 18.6771 15.6112 18.8363C16.2836 19.1908 17.352 17.938 17.6083 19.1975C17.7243 19.8459 17.5529 20.6167 17.4189 21.2642C17.816 21.2261 18.6494 21.2487 19.0781 21.2487L22.2246 21.2494C22.6061 21.2489 23.3056 21.2272 23.6618 21.2541L23.6613 14.9182Z"/><path d="M1.86245 16.3233C1.74148 15.9932 1.56016 15.6046 1.41806 15.2784L0.670022 13.5641C0.555338 13.3025 0.233457 12.634 0.198658 12.3928C0.153561 12.0803 0.461883 11.0901 0.551316 10.7533L1.1513 8.486L1.50421 7.14952C1.56948 6.90313 1.63619 6.59998 1.7365 6.3692C1.90443 5.98288 2.45484 6.12892 2.75606 6.20239C3.5816 6.40332 4.41534 6.57001 5.24123 6.7693C5.37384 6.80129 5.54264 6.85534 5.66878 6.90819C6.543 7.27442 7.40747 7.66484 8.28204 8.03035C8.3748 8.06912 8.48594 8.11309 8.58415 8.13268C9.1384 7.72864 9.69616 7.32945 10.2574 6.93516C10.565 6.71687 10.8884 6.46613 11.2204 6.28602C11.3273 6.22806 11.4659 6.21744 11.5832 6.23518C11.9873 6.29748 12.2149 6.63088 12.151 7.0303C12.1394 7.10293 12.1063 7.20629 12.0577 7.26226C11.8842 7.46216 11.6468 7.61729 11.4326 7.76853C10.6818 8.29874 9.9315 8.82877 9.18319 9.36242C9.03455 9.46885 8.76715 9.63397 8.5811 9.58494C7.66573 9.33158 6.77709 8.75167 5.86055 8.51884C5.46295 9.88859 5.1 11.37 4.73379 12.756L6.29358 14.4736C6.65093 14.8671 7.0691 15.2725 7.35047 15.72C7.39359 15.7885 7.43813 16.0871 7.44134 16.1757C7.49334 17.6144 7.53328 19.0565 7.56059 20.4958C7.56647 20.8056 7.46803 21.0771 7.23635 21.2911C7.02488 21.4891 6.74236 21.5931 6.453 21.5796C6.15295 21.5676 5.77887 21.3575 5.63255 21.1033C5.39346 20.6881 5.44791 19.9481 5.43656 19.4675L5.38545 17.8077C5.37436 17.4164 5.37314 16.9847 5.34368 16.5975C5.26263 16.4535 4.62661 15.7571 4.48826 15.6154C4.12331 15.2416 3.66473 14.6615 3.29505 14.3156C3.52936 14.8374 4.00207 15.772 4.07761 16.3311C4.11162 16.5828 3.67922 17.4359 3.54349 17.7289L2.77638 19.3862L2.24379 20.5379C2.04484 20.9676 1.92303 21.371 1.45537 21.5805C1.21326 21.6919 0.936319 21.7002 0.687989 21.6035C0.246302 21.4291 0.196633 21.1694 0 20.8724V20.3658C0.104342 20.1946 0.23685 19.8665 0.326227 19.6695L0.853634 18.5287L1.51972 17.089C1.61113 16.8919 1.80332 16.5072 1.86245 16.3233Z"/></g></symbol>
+
+    <symbol id="i-clock" viewBox="0 0 11 11"><g fill="none" stroke="url(#gm11)" stroke-linecap="round" stroke-linejoin="round"><path stroke-width="1.025" d="M9.3979 5.12632C9.3979 7.48437 7.48412 9.39815 5.12608 9.39815C2.76803 9.39815 0.854248 7.48437 0.854248 5.12632C0.854248 2.76827 2.76803 0.854492 5.12608 0.854492C7.48412 0.854492 9.3979 2.76827 9.3979 5.12632Z"/><path stroke-width=".683" d="M6.71092 6.4845L5.38666 5.69421C5.15598 5.55751 4.96802 5.22858 4.96802 4.95946V3.20801"/></g></symbol>
+
+    <symbol id="i-coin" viewBox="0 0 11 11"><g fill="none" stroke="url(#gm11)" stroke-width=".683" stroke-linecap="round" stroke-linejoin="round"><path d="M3.41748 4.87034C3.41748 5.19927 3.67379 5.4684 3.98563 5.4684H4.62641C4.8998 5.4684 5.12194 5.23345 5.12194 4.94723C5.12194 4.63539 4.98524 4.52432 4.78447 4.4517L3.75923 4.09287C3.55418 4.02025 3.41748 3.90918 3.41748 3.59733C3.41748 3.31112 3.63962 3.07617 3.91301 3.07617H4.55379C4.8699 3.08044 5.12621 3.3453 5.12621 3.67423"/><path d="M4.27173 5.48926V5.80537"/><path d="M4.27173 2.73828V3.07148"/><path d="M7.68063 4.26768C7.68063 6.15274 6.15249 7.68087 4.26744 7.68087C2.38239 7.68087 0.854248 6.15274 0.854248 4.26768C0.854248 2.38263 2.38239 0.854492 4.26744 0.854492C6.15249 0.854492 7.68063 2.38263 7.68063 4.26768Z"/><path d="M5.54492 8.49273C5.92939 9.03525 6.55735 9.38981 7.27501 9.38981C8.44122 9.38981 9.38957 8.44147 9.38957 7.27526C9.38957 6.56613 9.03928 5.93818 8.5053 5.55371"/></g></symbol>
+  </defs>
+</svg>
+
+
+    <!--
+        The page is built as one 393px wide mobile canvas, exactly like the Figma frame "Promo Page" (393 x 6198).
+        Every piece is placed with the same x / y numbers I read from Figma, in the same layer order (z-index).
+        script.js scales the whole canvas to fit the phone screen width.
+    -->
+    <div class="stage" id="stage">
+        <main class="page" id="page">
+    <div class="glow half" style="left:241.97px;top:2818px;width:172px;height:136px;z-index:0;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="glow" style="left:-16.03px;top:2620px;width:172px;height:136px;z-index:0;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <i class="dot" style="left:33px;top:2718px;width:5px;height:5px;z-index:0;background:#f00"></i>
+    <div class="t" style="left:41px;top:2714px;z-index:0;font-size:12px;letter-spacing:0.05em">COMMUNITY MENTORS</div>
+    <div class="t w" style="left:140.03px;top:2784.7px;width:233px;height:28px;z-index:0;font-size:12px;letter-spacing:0.05em">People need more than encouragement; they need opportunities, connections, and new paths to explore.</div>
+    <div class="t w mx" style="left:140.03px;top:2739.7px;width:224px;height:35px;z-index:0;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Give <em class="hl">someone</em> a seat.</div>
+    <a class="btn metal" href="#" style="left:34px;top:2913.39px;width:65.97px;height:28.57px;z-index:0;border-radius:6.49px;font-size:15.58px"><span>Talk to us</span></a>
+    <a class="btn ghostr" href="#" style="left:108.05px;top:2913px;width:125.57px;height:28.57px;z-index:0;border-radius:6.49px;font-size:15.58px;--sw:1.3px"><span>Introduce them to UXD</span></a>
+    <span id="counter" class="anchor" style="top:0px"></span>
+    <span id="referrals" class="anchor" style="top:1066px"></span>
+    <span id="selp" class="anchor" style="top:1780px"></span>
+    <span id="solve" class="anchor" style="top:2936px"></span>
+    <div class="glow" style="left:-2px;top:1582px;width:265.6px;height:210px;z-index:1;--b:77px"><b style="left:0;top:55.58px;width:154.41px;height:154.41px"></b><b style="left:163.68px;top:0;width:101.91px;height:101.91px"></b></div>
+    <svg class="abs" style="left:33px;top:1570px;width:24px;height:24px;z-index:1" viewBox="0 0 24 24"><use href="#i-fire" fill="#fedb8c"/></svg>
+    <div class="t" style="left:59px;top:1577px;z-index:1;font-size:12px;letter-spacing:0.05em">Featured Posts</div>
+    <div class="ph" data-label="featured-post.png" style="left:18px;top:1599px;width:148px;height:185px;z-index:1;"><img src="assets/featured-post.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="lanyard" style="left:202px;top:1445px;width:121.23px;height:323px;z-index:2"><div class="abs strap" style="left:53.72px;top:56.63px;width:14.28px;height:74.61px"></div><div class="abs" style="left:8.65px;top:151.35px;width:109.83px;height:165.31px;border-radius:8.6px;background:linear-gradient(160deg,#ab000a,#370205);transform:rotate(3deg);transform-origin:0 0"></div><div class="abs" style="left:1.22px;top:157.61px;width:110.09px;height:165.7px;border-radius:8.6px;background:linear-gradient(200deg,#0d0b0c,#890004);transform:rotate(-3.5deg);transform-origin:0 0"></div><img class="abs" src="assets/logo.svg" alt="" style="left:42.34px;top:172.25px;width:33.47px;height:6.94px;transform:rotate(-3.5deg);transform-origin:0 0"><div class="abs" style="left:16.26px;top:191.52px;width:86.06px;height:114.23px;border-radius:3.82px;background:#fff;transform:rotate(-3.5deg);transform-origin:0 0"></div><div class="t w" style="left:32px;top:237.53px;width:57.86px;font-size:5px;color:#000;letter-spacing:.05em;transform:rotate(-3.5deg);transform-origin:0 0">Hey Thabo, I thought of you when I came across UXD. I remember you telling me you wanted to explore a different direction, and I thought
+UX/UI Design might be worth looking at.</div><div class="t" style="left:34px;top:281.53px;font-size:5px;font-weight:700;color:#000;letter-spacing:.05em;transform:rotate(-3.5deg);transform-origin:0 0">Written by: John Doe</div><div class="t" style="left:43.91px;top:182.93px;font-family:Khula,sans-serif;font-weight:600;font-size:2.68px;letter-spacing:.5em;transform:rotate(-3.5deg);transform-origin:0 0">Referral Card</div><div class="t" style="left:27.84px;top:196.88px;width:68.34px;font-size:20px;font-weight:700;font-style:italic;line-height:20px;color:#000;letter-spacing:0;transform:rotate(-3.5deg);transform-origin:0 0">I THOUGHT 
+OF YOU</div><div class="abs" style="left:49.15px;top:130.42px;width:24.26px;height:12.97px;border-radius:2px 2px 6px 6px;background:#d1d0d1"></div><div class="abs" style="left:56.24px;top:147.83px;width:13px;height:13px;border-radius:50%;border:2px solid #5a5a5a"></div><div class="abs" style="left:60.05px;top:143.43px;width:2.1px;height:7.17px;background:#5a5a5a"></div><div class="t" style="left:59.09px;top:121.63px;font-family:Khula,sans-serif;font-weight:600;font-size:2.68px;letter-spacing:.5em;transform:rotate(-90deg);transform-origin:0 0">ULUNTUXD STUDIO</div></div>
+    <b class="gcirc" style="left:-29px;top:5606px;width:100px;height:100px;z-index:3"></b>
+    <b class="gcirc" style="left:77px;top:5570px;width:66px;height:66px;z-index:3"></b>
+    <div class="abs "  style="left:-9px;top:5696px;width:448px;height:512px;z-index:4;background:#fff"></div>
+    <div class="ph" data-label="women-bg.png" style="left:-7px;top:5696px;width:404px;height:513px;z-index:5;--bm:exclusion"><img src="assets/women-bg.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <i class="dot" style="left:38px;top:5781px;width:5px;height:5px;z-index:6;background:#ff0095"></i>
+    <div class="t" style="left:46px;top:5777px;z-index:6;font-size:12px;letter-spacing:0.05em">WOMEN IN TECH</div>
+    <div class="t w" style="left:170px;top:5933px;width:198px;height:70px;z-index:7;font-size:12px;letter-spacing:0.05em"><em class="pk">“</em>Here at UXD its women’s day everyday because, investing in women isn’t just the right thing to do, it means creating opportunities for them to learn, grow, and lead. Also giving them the confidence to shape their own futures. <em class="pk">“</em></div>
+    <div class="t" style="left:39px;top:5791px;z-index:8;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">MORE WOMEN.</div>
+    <div class="t" style="left:78px;top:5821px;z-index:9;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px"><em class="pk">BRIGHTER</em> FUTURE<em class="pk">.</em></div>
+    <div class="t w" style="left:167px;top:5863px;width:171px;height:70px;z-index:10;font-size:32px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Make <em class="pk">room</em> for her <em class="pk">future</em>.</div>
+    <div class="glow" style="left:2px;top:5063px;width:172px;height:136px;z-index:11;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <i class="dot" style="left:39px;top:5194px;width:5px;height:5px;z-index:11;background:#f00"></i>
+    <div class="t" style="left:47px;top:5190px;z-index:11;font-size:12px;letter-spacing:0.05em">BUSINESS MATCH</div>
+    <div class="t w" style="left:44px;top:5279px;width:233px;height:42px;z-index:11;font-size:12px;letter-spacing:0.05em">Tell us what your business needs. We’ll help you find relevant partners, expertise and opportunities, without the endless searching.</div>
+    <div class="t" style="left:40px;top:5204px;width:322px;height:70px;z-index:11;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">GOOD BUSINESS STARTS
+WITH THE RIGHT CONNECTION.</div>
+    <div class="t mx" style="left:22px;top:5332px;width:158px;height:35px;z-index:11;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">3 <em class="hl">Simple</em> steps.</div>
+    <div class="ph" data-label="hero.png" style="left:-6px;top:-2px;width:399px;height:527px;z-index:12;"><img src="assets/hero.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="abs "  style="left:1px;top:4835px;width:393px;height:321px;z-index:13;background:#fedb8c"></div>
+    <div class="ph" data-label="backup-bg.png" style="left:1px;top:4848px;width:392px;height:308px;z-index:14;--bm:luminosity"><img src="assets/backup-bg.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="ph" data-label="exec-leaders-bg.png" style="left:178px;top:2990px;width:218px;height:288px;z-index:15;--io:0.75"><img src="assets/exec-leaders-bg.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="ph" data-label="small-business-bg.png" style="left:0px;top:2355px;width:394px;height:315px;z-index:16;--io:0.75"><img src="assets/small-business-bg.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="glow half" style="left:241px;top:2537px;width:172px;height:136px;z-index:17;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="glow" style="left:-17px;top:2339px;width:172px;height:136px;z-index:17;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <i class="dot" style="left:32px;top:2470.3px;width:5px;height:5px;z-index:17;background:#f00"></i>
+    <div class="t" style="left:40px;top:2466.3px;z-index:17;font-size:12px;letter-spacing:0.05em">SMALL BUSINESSES</div>
+    <div class="t w" style="left:36px;top:2555px;width:184px;height:42px;z-index:17;font-size:12px;letter-spacing:0.05em">You've imagined it, talked about it and maybe even started sketching it out. Now you need to understand what it would take to bring it to life.</div>
+    <div class="t w mx" style="left:34px;top:2486px;width:271px;height:70px;z-index:17;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">You've got <em class="hl">an idea</em> that won't leave you alone.</div>
+    <a class="btn red" href="#" style="left:34px;top:2617px;width:78.78px;height:31.65px;z-index:17;border-radius:7.19px;font-size:17.27px"><span>Book a call</span></a>
+    <a class="btn ghostr" href="#" style="left:127.53px;top:2617px;width:105.65px;height:31.65px;z-index:17;border-radius:7.19px;font-size:17.27px;--sw:1.44px"><span>Explore Options</span></a>
+    <div class="glow half" style="left:244px;top:3134px;width:172px;height:136px;z-index:18;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="glow" style="left:-14px;top:2936px;width:172px;height:136px;z-index:18;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <i class="dot" style="left:35px;top:3067.3px;width:5px;height:5px;z-index:18;background:#f00"></i>
+    <div class="t" style="left:43px;top:3063.3px;z-index:18;font-size:12px;letter-spacing:0.05em">EXECUTIVE LEADERS</div>
+    <div class="t w" style="left:39.03px;top:3152px;width:233px;height:42px;z-index:18;font-size:12px;letter-spacing:0.05em">Balance customers, teams, systems, and performance. Understand the problem worth solving, whether exploring opportunities or addressing challenges.</div>
+    <div class="t w" style="left:24px;top:3077px;width:352px;height:70px;z-index:18;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Ambitions need a clear view of obstacles.</div>
+    <a class="btn metal" href="#" style="left:24px;top:3212.44px;width:74.2px;height:32.12px;z-index:18;border-radius:7.3px;font-size:17.52px"><span>Talk to us</span></a>
+    <a class="btn ghostr" href="#" style="left:108.67px;top:3212px;width:116.12px;height:32.12px;z-index:18;border-radius:7.3px;font-size:17.52px;--sw:1.46px"><span>Send Us One item </span></a>
+    <img class="abs" src="assets/logo.svg" alt="UluntuXD" style="left:31px;top:43px;width:80px;height:16.22px;z-index:19">
+    <div class="t" style="left:18px;top:400px;z-index:20;font-size:10.42px;letter-spacing:0em;font-family:'Inter',sans-serif">A new direction. A skill to build. 
+A problem to solve. Let’s find
+your next step.</div>
+    <div class="tape" style="left:-111.85px;top:1296.69px;z-index:21;transform:rotate(3deg)"></div>
+    <div class="glow" style="left:2px;top:71px;width:172px;height:136px;z-index:22;transform:rotate(180deg);--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <a class="btn red" href="#" style="left:16.5px;top:446.17px;width:78.78px;height:31.65px;z-index:23;border-radius:7.19px;font-size:17.27px"><span>Book a call</span></a>
+    <a class="btn ghostm" href="#" style="left:110.03px;top:446.17px;width:105.65px;height:31.65px;z-index:24;border-radius:7.19px;font-size:17.27px;--sw:1.44px"><span>Explore Options</span></a>
+    <div class="glow" style="left:232px;top:561px;width:172px;height:136px;z-index:25;transform:rotate(180deg);--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="glow" style="left:-32px;top:543px;width:172px;height:136px;z-index:25;transform:rotate(180deg);--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="glow" style="left:213px;top:119px;width:172px;height:136px;z-index:25;transform:rotate(180deg);--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <svg class="abs head" style="left:0px;top:0px;width:400px;height:700px;z-index:25" viewBox="0 0 400 700"><text x="17.6" y="384.7" font-size="45" textLength="63.5" lengthAdjust="spacingAndGlyphs" fill="url(#gHead)">HERE</text><text x="84.1" y="384.7" font-size="45" textLength="5.7" lengthAdjust="spacingAndGlyphs" fill="url(#gHead)">.</text></svg>
+    <svg class="abs head" style="left:0px;top:0px;width:400px;height:700px;z-index:25" viewBox="0 0 400 700"><text x="16" y="298.6" font-size="45" textLength="140.5" lengthAdjust="spacingAndGlyphs" fill="#fff">YOUR NEXT</text></svg>
+    <div class="ticker" style="left:0px;top:510px;width:393px;height:25.06px;z-index:25"><div class="tk-run"><div class="tk-u"><span class="tk-t" style="left:6.68px">LIMITED TIME OFFER -50% OFF ON EVERYTHING</span><i class="tk-ring"></i><i class="tk-dot"></i><span class="tk-t" style="left:220.52px">USE DISCOUNT CODE ‘ALL50 AT CHECKOUT</span></div><div class="tk-u"><span class="tk-t" style="left:6.68px">LIMITED TIME OFFER -50% OFF ON EVERYTHING</span><i class="tk-ring"></i><i class="tk-dot"></i><span class="tk-t" style="left:220.52px">USE DISCOUNT CODE ‘ALL50 AT CHECKOUT</span></div></div></div>
+    <div class="ph" data-label="seats.png" style="left:114px;top:1380px;width:276px;height:150px;z-index:26;"><img src="assets/seats.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <i class="dot" style="left:10px;top:1412px;width:5px;height:5px;z-index:27;background:#f00"></i>
+    <div class="t" style="left:18px;top:1408px;z-index:27;font-size:12px;letter-spacing:0.05em">Referrals</div>
+    <div class="t w" style="left:19px;top:1501px;width:173px;height:28px;z-index:27;font-size:12px;letter-spacing:0.05em">Know someone or a business who could benefit from uxd today?</div>
+    <div class="t mx" style="left:16px;top:1426.04px;width:211.04px;height:70px;z-index:27;transform:matrix(0.9986,-0.0523,0.0523,0.9986,0,0);font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Multiply some 
+<em class="hl">seats</em> today.</div>
+    <a class="btn metal" href="#" style="left:19px;top:1535px;width:85.08px;height:33.08px;z-index:28;border-radius:7.52px;font-size:18.05px"><span>Learn More</span></a>
+    <a class="btn ghostr" href="#" style="left:116.74px;top:1535px;width:102.08px;height:33.08px;z-index:29;border-radius:7.52px;font-size:18.05px;--sw:1.5px"><span>Multiply seats</span></a>
+    <div class="tape" style="left:-105.07px;top:1819.65px;z-index:30;transform:rotate(-3deg)"></div>
+    <div class="tape" style="left:-102.95px;top:2316.38px;z-index:31;transform:rotate(3deg)"></div>
+    <div class="glow" style="left:219px;top:3264px;width:172px;height:136px;z-index:32;transform:rotate(180deg);--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="ph" data-label="gift-bg-1.png" style="left:-38px;top:3314px;width:524px;height:300px;z-index:32;--io:0.75"><img src="assets/gift-bg-1.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="ph" data-label="gift-bg-3.png" style="left:-54px;top:3833px;width:524px;height:300px;z-index:32;--io:0.75"><img src="assets/gift-bg-3.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <i class="dot" style="left:26px;top:3336.12px;width:5px;height:5px;z-index:32;background:#f00"></i>
+    <div class="t" style="left:34px;top:3332.12px;z-index:32;font-size:12px;letter-spacing:0.05em">Referrals</div>
+    <div class="t w" style="left:35px;top:3425.24px;width:135px;height:28px;z-index:32;font-size:12px;letter-spacing:0.05em">Share the joy of learning and gift a loved a head start on their future.</div>
+    <div class="t w mx" style="left:32px;top:3346.27px;width:211.04px;height:70px;z-index:32;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Gift <em class="hl">the gift</em> of possibility</div>
+    <div class="ph" data-label="gift-boxes.png" style="left:187px;top:3355px;width:224px;height:224px;z-index:32;"><img src="assets/gift-boxes.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="abs ring m"  style="left:33.24px;top:3462px;width:182.76px;height:121.42px;z-index:32;background:#171717;border-radius:10.04px;--sw:1.37px"></div>
+    <div class="abs "  style="left:64.55px;top:3462.12px;width:9.6px;height:120.7px;z-index:32;background:var(--metal-y)"></div>
+    <div class="abs "  style="left:33px;top:3504.52px;width:182.43px;height:9.6px;z-index:32;background:var(--metal-y)"></div>
+    <div class="ph" data-label="gift-bow.png" style="left:39.86px;top:3477.08px;width:59.36px;height:59.36px;z-index:32;"><img src="assets/gift-bow.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <a class="btn metal" href="#" style="left:85.12px;top:3536.07px;width:117.96px;height:30.18px;z-index:32;border-radius:6.86px;font-size:16.46px"><span>Explore Gift Options</span></a>
+    <img class="abs" src="assets/logo.svg" alt="" style="left:164.68px;top:3477.08px;width:39.78px;height:8.06px;z-index:32">
+    <div class="glow half" style="left:224.03px;top:1183px;width:172px;height:136px;z-index:33;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="ph" data-label="ladder.png" style="left:194.03px;top:1085px;width:193px;height:183px;z-index:33;--bl:5px"><img src="assets/ladder.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="glow" style="left:-33.97px;top:985px;width:172px;height:136px;z-index:33;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <i class="dot" style="left:15.03px;top:1116.3px;width:5px;height:5px;z-index:33;background:#f00"></i>
+    <div class="t" style="left:23.03px;top:1112.3px;z-index:33;font-size:12px;letter-spacing:0.05em">Career Switchers</div>
+    <div class="t w" style="left:19.03px;top:1201px;width:171px;height:42px;z-index:33;font-size:12px;letter-spacing:0.05em">It's never too late to write a new chapter in your professional journey. Take the first step towards a more fulfilling career path today!</div>
+    <div class="t mx" style="left:17.13px;top:1131.76px;width:211.04px;height:70px;z-index:33;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Want to make 
+a <em class="hl">switch?</em></div>
+    <a class="btn red" href="#" style="left:20px;top:1265px;width:78.78px;height:31.65px;z-index:33;border-radius:7.19px;font-size:17.27px"><span>Book a call</span></a>
+    <a class="btn ghostr" href="#" style="left:113.53px;top:1265px;width:105.65px;height:31.65px;z-index:33;border-radius:7.19px;font-size:17.27px;--sw:1.44px"><span>Explore Options</span></a>
+    <span class="pill" style="left:22.03px;top:1249px;width:43px;height:9.01px;z-index:33;font-size:4.91px">Beyond your career</span>
+    <div class="tape" style="left:-104.96px;top:1066.53px;z-index:34;transform:rotate(-3deg)"></div>
+    <div class="tape" style="left:-194px;top:2684.27px;z-index:35;transform:rotate(-3deg)"></div>
+    <div class="tape" style="left:-194.98px;top:2954.38px;z-index:36;transform:rotate(3deg)"></div>
+    <div class="tape" style="left:-212.09px;top:3294.65px;z-index:37;transform:rotate(-3deg)"></div>
+    <div class="tape" style="left:-205.98px;top:3580.38px;z-index:38;transform:rotate(3deg)"></div>
+    <div class="tape" style="left:-135.09px;top:4129.65px;z-index:39;transform:rotate(-3deg)"></div>
+    <div class="ph" data-label="metric-girl.png" style="left:175px;top:546.77px;width:216.14px;height:314.11px;z-index:40;transform:matrix(0.9998,-0.0175,0.0175,0.9998,0,0);--bm:luminosity;--bl:5px"><img src="assets/metric-girl.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <i class="dot" style="left:25px;top:654px;width:5px;height:5px;z-index:40;background:#f00"></i>
+    <div class="t" style="left:33px;top:650px;z-index:40;font-size:12px;letter-spacing:0.05em">LIFE AFTER MATRIC</div>
+    <div class="t" style="left:29px;top:739px;z-index:40;font-size:12px;letter-spacing:0.05em">Explore alternative learning paths, gain
+ in demand skills and build a future
+ that works for you.</div>
+    <div class="t rg" style="left:27.11px;top:669.47px;width:211.04px;height:70px;z-index:40;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Completed<em class="hl"> Matric?
+</em>What’s next?</div>
+    <a class="btn red" href="#" style="left:27.5px;top:801.18px;width:78.78px;height:31.65px;z-index:40;border-radius:7.19px;font-size:17.27px"><span>Book a call</span></a>
+    <a class="btn ghostr" href="#" style="left:121.03px;top:801.18px;width:105.65px;height:31.65px;z-index:40;border-radius:7.19px;font-size:17.27px;--sw:1.44px"><span>Explore Options</span></a>
+    <div class="scroller" style="left:12px;top:838px;width:380px;height:203px;z-index:40"><div class="sc-in" style="width:798px;height:203px"><div class="card" style="left:0px;top:6.23px;width:150.51px;height:197.27px;border-radius:14.61px;--sw:0.73px"><div class="ph" data-label="card.png" style="left:-2.19px;top:-2.92px;width:154.85px;height:105.24px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.58px;top:105.21px;font-size:11.69px;font-weight:600;letter-spacing:.05em">Finding Direction</div><div class="t w" style="left:6.23px;top:126.14px;width:137.89px;font-size:8.77px;letter-spacing:.05em">Not sure whether university, work or another path is right for you? Explore your options before deciding what comes next.</div><a class="btn metal" href="#" style="left:6.58px;top:172.42px;width:140.28px;height:16.07px;border-radius:3.65px;font-size:8.77px"><span>Explore your options</span></a><i class="num" style="left:12.09px;top:11.9px;width:20.15px;height:20.15px;font-size:13.84px">1</i></div><div class="card" style="left:177.54px;top:3.12px;width:150.51px;height:197.27px;border-radius:14.61px;--sw:0.73px"><div class="ph" data-label="card.png" style="left:-2.19px;top:-2.93px;width:154.85px;height:105.24px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.57px;top:105.2px;font-size:11.69px;font-weight:600;letter-spacing:.05em">Beyond the degree</div><div class="t w" style="left:6.23px;top:127.7px;width:137.89px;font-size:8.77px;letter-spacing:.05em">Want to build practical skills without following the traditional degree route? Discover another way to start learning.</div><a class="btn metal" href="#" style="left:6.57px;top:172.42px;width:140.28px;height:16.07px;border-radius:3.65px;font-size:8.77px"><span>Explore learning Paths</span></a><i class="num" style="left:11.85px;top:10.98px;width:20.15px;height:20.15px;font-size:13.84px">2</i></div><div class="card" style="left:355.08px;top:0px;width:150.51px;height:197.27px;border-radius:14.61px;--sw:0.73px"><div class="ph" data-label="card.png" style="left:-2.19px;top:-2.92px;width:154.85px;height:105.24px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.57px;top:105.21px;font-size:11.69px;font-weight:600;letter-spacing:.05em">Ready to explore</div><div class="t w" style="left:6.23px;top:126.14px;width:137.89px;font-size:8.77px;letter-spacing:.05em">A month-long sprint to develop and validate a minimum viable product with user testing.</div><a class="btn metal" href="#" style="left:6.57px;top:172.43px;width:140.28px;height:16.07px;border-radius:3.65px;font-size:8.77px"><span>Discover UXD programmes</span></a><i class="num" style="left:11.62px;top:12.09px;width:20.15px;height:20.15px;font-size:13.84px">3</i></div><div class="bigcard" style="left:535.94px;top:0px;width:261.93px;height:199.47px;border-radius:40.3px;--sw:1.15px"><div class="t mx h2" style="left:26.5px;top:14.1px;width:136.05px;height:41px;font-size:27.67px;line-height:40.35px">What you’ll <em class="hl">get.</em></div><div class="t h2" style="left:106.79px;top:139.02px;width:72.64px;font-size:27.67px;line-height:40.35px">R 1 900</div><div class="t" style="left:8.06px;top:56.42px;width:203.5px;font-size:13.84px;letter-spacing:.05em">Explore UX/UI Design as a whole or UX Research
+Flexible learning Options
+Mentorship &amp; Support from industry professionals</div><div class="t" style="left:42.31px;top:151.11px;font-size:13.84px">Starting from:</div><div class="t" style="left:54.4px;top:173.27px;font-size:13.84px;font-weight:500;color:#ff000a">Next Intake : 12 Nov 2026</div></div></div></div>
+    <div class="ph" data-label="selp-bg.png" style="left:0px;top:1821px;width:414px;height:485px;z-index:41;--io:0.5"><img src="assets/selp-bg.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="glow half" style="left:251px;top:2207px;width:172px;height:136px;z-index:41;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <div class="glow" style="left:-6px;top:1780px;width:172px;height:136px;z-index:41;--b:50px"><b style="left:0;top:36px;width:100px;height:100px"></b><b style="left:106px;top:0;width:66px;height:66px"></b></div>
+    <i class="dot" style="left:43px;top:1911.3px;width:5px;height:5px;z-index:41;background:#f00"></i>
+    <div class="t" style="left:51px;top:1907.3px;z-index:41;font-size:12px;letter-spacing:0.05em">CORPORATE LEADERS</div>
+    <div class="t w" style="left:47px;top:1996px;width:272px;height:42px;z-index:41;font-size:12px;letter-spacing:0.05em">SELP gives your business access to research, strategy and design support when you need it, helping you tackle challenges, deliver work and keep things moving.</div>
+    <div class="t mx" style="left:32px;top:1921px;width:352px;height:70px;z-index:41;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em;line-height:35px">Every great team, 
+needs a <em class="hl">bench</em>.</div>
+    <a class="btn metal" href="#" style="left:32.55px;top:2055.91px;width:84.43px;height:36.78px;z-index:41;border-radius:8.36px;font-size:20.06px"><span>Talk to us</span></a>
+    <a class="btn ghostr" href="#" style="left:127.75px;top:2056.96px;width:208.08px;height:33.08px;z-index:41;border-radius:7.52px;font-size:18.04px;--sw:1.5px"><span>Send us one item from your backlog</span></a>
+    <i class="dot" style="left:29px;top:3643px;width:5px;height:5px;z-index:42;background:#f00"></i>
+    <div class="t" style="left:37px;top:3639px;z-index:42;font-size:12px;letter-spacing:0.05em">Unlock exclusive offers</div>
+    <div class="t" style="left:33px;top:3696.91px;z-index:42;transform:matrix(0.9986,-0.0523,0.0523,0.9986,0,0);font-size:12px;letter-spacing:0.05em">Every spin opens a new possibility.</div>
+    <div class="t w" style="left:32px;top:3661.04px;width:211.04px;height:43px;z-index:42;transform:matrix(0.9986,-0.0523,0.0523,0.9986,0,0);font-size:36px;font-weight:700;font-style:italic;letter-spacing:0em">SPIN THE WHEEL</div>
+    <a class="btn metal" href="#" style="left:163px;top:4059px;width:68px;height:22px;z-index:43;border-radius:5px;font-size:12px"><span>Spin the wheel</span></a>
+    <p class="result" id="result" aria-live="polite" style="left:0px;top:4088px;width:393px;height:20px;z-index:43"></p>
+    <div class="ph" data-label="selp-photo.png" style="left:256px;top:1889px;width:112px;height:73px;z-index:44;border-radius:10px;box-shadow:inset 0 0 0 1px #ff000a"><img src="assets/selp-photo.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <svg class="abs" style="left:29px;top:4141px;width:24px;height:24px;z-index:45" viewBox="0 0 24 24"><use href="#i-fire" fill="url(#gFire)"/></svg>
+    <div class="t" style="left:55px;top:4148px;z-index:45;font-size:12px;letter-spacing:0.05em">HOT RIGHT NOW</div>
+    <svg class="abs head" style="left:0px;top:4174px;width:400px;height:100px;z-index:45" viewBox="0 0 400 100" aria-label="A few things worth your attention."><g font-size="53.5" fill="#fff"><text x="29" y="37.1" textLength="341.5" lengthAdjust="spacingAndGlyphs">A FEW THINGS WORTH</text><text x="29" y="88.1" textLength="215" lengthAdjust="spacingAndGlyphs">YOUR ATTENTI</text><text x="249.3" y="88.1" textLength="43.5" lengthAdjust="spacingAndGlyphs" fill="#f00">ON</text><text x="297.8" y="88.1" textLength="5.5" lengthAdjust="spacingAndGlyphs" fill="#f00">.</text></g></svg>
+    <div class="t w" style="left:32px;top:4280px;width:268px;height:28px;z-index:45;font-size:12px;letter-spacing:0.05em">Popular opportunities, new offers, and what people are most interested in.</div>
+    <div class="card hot" style="left:42px;top:4335px;width:140.8px;height:184.54px;z-index:45;border-radius:13.67px;--sw:.68px"><div class="ph" data-label="card.png" style="left:-2.05px;top:-2.73px;width:144.86px;height:98.45px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.15px;top:98.42px;font-size:10.94px;font-weight:600;letter-spacing:.05em">UX/UI Design Bootcamp</div><div class="t" style="left:6.15px;top:111.41px;width:127px;font-size:8.2px;letter-spacing:.05em">Try it first. Get hands on with real world projects
+and see if its for you.</div><div class="t" style="left:6.83px;top:148.32px;font-size:6.83px;letter-spacing:.05em">Fully credited if you decide to continue</div><svg class="abs" style="left:6.15px;top:135.33px;width:10.25px;height:10.25px" viewBox="0 0 11 11"><use href="#i-clock"/></svg><div class="t" style="left:17.77px;top:135.33px;font-size:8.2px;letter-spacing:.05em">2 weeks</div><svg class="abs" style="left:58.78px;top:135.33px;width:10.25px;height:10.25px" viewBox="0 0 11 11"><use href="#i-coin"/></svg><div class="t" style="left:71.77px;top:135.33px;font-size:8.2px;letter-spacing:.05em">R 1 900</div><a class="btn metal" href="#" style="left:6.15px;top:161.3px;width:131.23px;height:15.04px;border-radius:3.42px;font-size:8.2px"><span>Explore</span></a><span class="pill m" style="left:6.83px;top:7.52px;width:44.43px;height:15.04px;font-size:8.2px">Trending</span></div>
+    <div class="card hot" style="left:215px;top:4335px;width:140.8px;height:184.54px;z-index:45;border-radius:13.67px;--sw:.68px"><div class="ph" data-label="card.png" style="left:-2.05px;top:-2.73px;width:144.86px;height:98.45px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.15px;top:98.42px;font-size:10.94px;font-weight:600;letter-spacing:.05em">Selp Sprint</div><div class="t w" style="left:6.15px;top:111.41px;width:129px;font-size:8.2px;letter-spacing:.05em">A Two week sprint focused on one deliverable such as a proof of concept.</div><div class="t" style="left:6.83px;top:148.32px;font-size:6.83px;letter-spacing:.05em">Fully credited if you decide to continue</div><svg class="abs" style="left:6.15px;top:135.33px;width:10.25px;height:10.25px" viewBox="0 0 11 11"><use href="#i-clock"/></svg><div class="t" style="left:17.77px;top:135.33px;font-size:8.2px;letter-spacing:.05em">2 weeks</div><svg class="abs" style="left:58.78px;top:135.33px;width:10.25px;height:10.25px" viewBox="0 0 11 11"><use href="#i-coin"/></svg><div class="t" style="left:71.77px;top:135.33px;font-size:8.2px;letter-spacing:.05em">R 3 400</div><a class="btn metal" href="#" style="left:6.15px;top:161.3px;width:131.23px;height:15.04px;border-radius:3.42px;font-size:8.2px"><span>Explore</span></a><span class="pill m" style="left:6.83px;top:7.52px;width:44.43px;height:15.04px;font-size:8.2px">Popular</span></div>
+    <svg class="abs" style="left:23px;top:4885px;width:24px;height:24px;z-index:46" viewBox="0 0 24 24"><use href="#i-fire" fill="#000"/></svg>
+    <div class="t" style="left:49px;top:4892px;z-index:46;font-size:12px;color:#000;letter-spacing:0.05em">BRING BACKUP</div>
+    <div class="t w" style="left:21px;top:4996px;width:161px;height:70px;z-index:47;font-size:12px;color:#000;letter-spacing:0.05em">Share the opportunity with a friend. Learning is better together. Bring a friend along to double the accountability, share the experience, and tackle every task as a team.</div>
+    <div class="t w" style="left:19px;top:4920px;width:211.04px;height:70px;z-index:48;font-size:36px;font-weight:700;font-style:italic;color:#000;letter-spacing:0em;line-height:35px">You don’t need to start alone.</div>
+    <div class="offer" style="left:0px;top:4549px;width:425px;height:298px;z-index:49"><div class="ph" data-label="offer-bg.png" style="left:-3px;top:0;width:526px;height:298px;--bm:overlay"><img src="assets/offer-bg.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="timerbox" style="left:23px;top:150px;width:331px;height:84px"><div class="tb" style="left:51px;top:13px"><b id="d">1</b><span>DAYS</span></div><div class="tb" style="left:112px;top:13px"><b id="h">12</b><span>Hours</span></div><div class="tb" style="left:173px;top:13px"><b id="m">45</b><span>Mins</span></div><div class="tb" style="left:234px;top:14px"><b id="s">30</b><span>Secs</span></div></div><div class="t" style="left:47px;top:51.23px;width:310.08px;font-size:36px;font-weight:700;font-style:italic;letter-spacing:0;transform:rotate(-3deg);transform-origin:0 0">BOOTCAMP + FOUNDATIONS</div><svg class="abs" style="left:23px;top:13px;width:24px;height:24px" viewBox="0 0 24 24"><use href="#i-fire" fill="#fedb8c"/></svg><div class="t" style="left:49px;top:20px">LIMITED TIME OFFER</div><div class="t" style="left:327px;top:75px">COMBO</div><div class="t" style="left:49px;top:111px">Get both for :</div><div class="t" style="left:113px;top:107px;font-size:32px;font-weight:700;font-style:italic;line-height:20.03px;letter-spacing:0">R 7 500</div><a class="btn gold" href="#" style="left:23px;top:247px;width:331px;height:24px;border-radius:3.42px;font-size:12px"><span>APPLY NOW</span></a></div>
+    <div class="ph" data-label="community-mentors-photo.png" style="left:269.8px;top:2808px;width:109.92px;height:138.04px;z-index:50;transform:matrix(0.9696,0.2448,-0.2448,0.9696,0,0);"><img src="assets/community-mentors-photo.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="ph" data-label="exec-leaders-photo.png" style="left:300px;top:3142px;width:93px;height:103px;z-index:51;"><img src="assets/exec-leaders-photo.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="tape" style="left:-144.89px;top:4519px;z-index:52;transform:rotate(3deg)"></div>
+    <div class="tape" style="left:-146px;top:4855.27px;z-index:53;transform:rotate(-3deg)"></div>
+    <div class="disc" id="disc" style="left:52.55px;top:3749.3px"><svg viewBox="0 0 276 276" width="276" height="276"><linearGradient id="wg0" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="85.19" y2="10.5"><stop offset="0" stop-color="#3b0711"/><stop offset="1" stop-color="#6c1e14"/></linearGradient><path d="M138 138 L40.42 40.42 A138 138 0 0 1 138 0 Z" fill="url(#wg0)" stroke="#fff" stroke-width=".83"/><linearGradient id="wg1" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="190.81" y2="10.5"><stop offset="0" stop-color="#530a09"/><stop offset="1" stop-color="#d51522"/></linearGradient><path d="M138 138 L138 0 A138 138 0 0 1 235.58 40.42 Z" fill="url(#wg1)" stroke="#fff" stroke-width=".83"/><linearGradient id="wg2" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="265.5" y2="85.19"><stop offset="0" stop-color="#2f0305"/><stop offset="1" stop-color="#5b1613"/></linearGradient><path d="M138 138 L235.58 40.42 A138 138 0 0 1 276 138 Z" fill="url(#wg2)" stroke="#fff" stroke-width=".83"/><linearGradient id="wg3" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="265.5" y2="190.81"><stop offset="0" stop-color="#c91521"/><stop offset="1" stop-color="#5a0b0b"/></linearGradient><path d="M138 138 L276 138 A138 138 0 0 1 235.58 235.58 Z" fill="url(#wg3)" stroke="#fff" stroke-width=".83"/><linearGradient id="wg4" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="190.81" y2="265.5"><stop offset="0" stop-color="#5c1613"/><stop offset="1" stop-color="#29050d"/></linearGradient><path d="M138 138 L235.58 235.58 A138 138 0 0 1 138 276 Z" fill="url(#wg4)" stroke="#fff" stroke-width=".83"/><linearGradient id="wg5" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="85.19" y2="265.5"><stop offset="0" stop-color="#650c0d"/><stop offset="1" stop-color="#971019"/></linearGradient><path d="M138 138 L138 276 A138 138 0 0 1 40.42 235.58 Z" fill="url(#wg5)" stroke="#fff" stroke-width=".83"/><linearGradient id="wg6" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="10.5" y2="190.81"><stop offset="0" stop-color="#5c1613"/><stop offset="1" stop-color="#29050d"/></linearGradient><path d="M138 138 L40.42 235.58 A138 138 0 0 1 0 138 Z" fill="url(#wg6)" stroke="#fff" stroke-width=".83"/><linearGradient id="wg7" gradientUnits="userSpaceOnUse" x1="138" y1="138" x2="10.5" y2="85.19"><stop offset="0" stop-color="#530a09"/><stop offset="1" stop-color="#d51522"/></linearGradient><path d="M138 138 L0 138 A138 138 0 0 1 40.42 40.42 Z" fill="url(#wg7)" stroke="#fff" stroke-width=".83"/></svg><div class="t prize" style="left:78.02px;top:33.68px;width:35px;transform:matrix(0.9382,-0.3461,0.3461,0.9382,0,0);transform-origin:0 0">Portfolio 
+clinic</div><div class="t prize" style="left:237.11px;top:76.9px;width:36px;transform:matrix(0.376,0.9266,-0.9266,0.376,0,0);transform-origin:0 0">Free
+bootcamp</div><div class="t prize" style="left:249.94px;top:163.6px;width:35px;transform:matrix(-0.3642,0.9313,-0.9313,-0.3642,0,0);transform-origin:0 0">Sorry
+next time</div><div class="t prize" style="left:194.86px;top:235.39px;width:19px;transform:matrix(-0.8926,0.4508,-0.4508,-0.8926,0,0);transform-origin:0 0">100K</div><div class="t prize" style="left:116.21px;top:251.33px;width:31px;transform:matrix(-0.9598,-0.2807,0.2807,-0.9598,0,0);transform-origin:0 0">20% off 
+SelP
+Sprint</div><svg class="gift" viewBox="0 0 33 33" style="left:158.42px;top:34.66px;transform:rotate(0deg)"><use href="#i-gift"/></svg><svg class="gift" viewBox="0 0 33 33" style="left:31.08px;top:161.32px;transform:rotate(211.7deg)"><use href="#i-gift"/></svg><svg class="gift" viewBox="0 0 33 33" style="left:26.32px;top:84.57px;transform:rotate(-97deg)"><use href="#i-gift"/></svg></div>
+    <i class="knob" style="left:186.26px;top:4025.3px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="knob" style="left:327.72px;top:3883.02px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="knob" style="left:186.26px;top:3737.34px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="knob" style="left:82.65px;top:3779.68px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="knob" style="left:288.13px;top:3782.44px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="knob" style="left:286.52px;top:3981.89px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="knob" style="left:83.63px;top:3984.05px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="knob" style="left:40.4px;top:3883.02px;width:8.56px;height:8.56px;z-index:54"></i>
+    <i class="hub" style="left:146.64px;top:3841.1px;width:87.82px;height:87.82px;z-index:54"></i>
+    <button class="spin" id="spinBtn" type="button" style="left:153.8px;top:3848.27px;width:73.49px;height:73.49px;z-index:54">SPIN</button>
+    <svg class="abs picker" style="left:182px;top:3716px;width:17.52px;height:51.08px;z-index:54" viewBox="0 0 17.52 51.08"><path d="M8.76 1 C13.4 1 16.6 4.4 16.6 9.2 C16.6 21 11.4 35 8.76 50 C6.1 35 .92 21 .92 9.2 C.92 4.4 4.1 1 8.76 1 Z" fill="#ff0004" stroke="#fff" stroke-width="1.95"/></svg>
+    <div class="t w" style="left:217px;top:4909.98px;width:186.08px;height:52px;z-index:55;transform:matrix(0.973,-0.231,0.231,0.973,0,0);font-size:18.89px;color:#f00;letter-spacing:0em;font-family:'Caveat',cursive">bring your friend with you.</div>
+    <svg class="abs head" style="left:0px;top:0px;width:400px;height:400px;z-index:56" viewBox="0 0 400 400"><text x="19.3" y="344.5" font-size="51.6" textLength="115.1" lengthAdjust="spacingAndGlyphs" fill="#fff">BIG BREAK</text><text x="140.1" y="344.5" font-size="51.6" textLength="80.8" lengthAdjust="spacingAndGlyphs" fill="url(#gHead)">STARTS</text></svg>
+    <div class="ph" data-label="backup-friends.png" style="left:128px;top:4932px;width:340px;height:227px;z-index:57;"><img src="assets/backup-friends.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="tape" style="left:-153.89px;top:5128px;z-index:58;transform:rotate(3deg)"></div>
+    <div class="tape" style="left:-148px;top:5704.27px;z-index:59;transform:rotate(-3deg)"></div>
+    <div class="tape" style="left:-172.89px;top:6178px;z-index:60;transform:rotate(3deg)"></div>
+    <a class="btn gold" href="#" style="left:37px;top:5594px;width:309px;height:24px;z-index:61;border-radius:3.42px;font-size:12px"><span>Get Started</span></a>
+    <b class="gcirc" style="left:-43px;top:5342px;width:100px;height:100px;z-index:62"></b>
+    <b class="gcirc" style="left:239px;top:5232px;width:100px;height:100px;z-index:62"></b>
+    <b class="gcirc" style="left:345px;top:5196px;width:66px;height:66px;z-index:62"></b>
+    <a class="btn metal" href="#" style="left:19px;top:5074px;width:93px;height:22px;z-index:63;border-radius:5px;font-size:12px"><span>Share the Opportunity</span></a>
+    <div class="ph" data-label="women-liz.png" style="left:-14px;top:5871px;width:171px;height:123px;z-index:64;"><img src="assets/women-liz.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div>
+    <div class="abs "  style="left:153px;top:5871px;width:1px;height:123.07px;z-index:65;background:#ff0095"></div>
+    <div class="feat" style="left:16px;top:6010px;width:352px;height:113px;z-index:66"><i class="vl" style="left:117px;top:16px"></i><i class="vl" style="left:220px;top:16px"></i><svg class="abs" style="left:6px;top:20px;width:24px;height:24px" viewBox="0 0 24 24"><use href="#i-book"/></svg><div class="t b" style="left:41px;top:16px">Learn from
+industry experts</div><svg class="abs" style="left:124px;top:20px;width:24px;height:24px" viewBox="0 0 24 24"><use href="#i-puzzle"/></svg><div class="t b" style="left:159px;top:16px">Build real
+world skills</div><svg class="abs" style="left:227px;top:17px;width:24px;height:24px" viewBox="0 0 24 24"><use href="#i-door"/></svg><div class="t b" style="left:262px;top:13px">Open doors
+to new opportunites</div><a class="btn pink" href="#" style="left:10px;top:74px;width:162px;height:24px;border-radius:3.42px;font-size:12px"><span>Nominate or Apply</span></a><a class="btn pinko" href="#" style="left:180px;top:74px;width:162px;height:24px;border-radius:3.42px;font-size:12px"><span>Learn More</span></a></div>
+    <div class="abs "  style="left:25px;top:5379px;width:25px;height:25px;z-index:67;background:#fedb8c;border-radius:50px"></div>
+    <div class="t" style="left:32px;top:5374px;z-index:67;font-size:16px;font-weight:700;color:#000;letter-spacing:0em;line-height:35px;font-family:'Caveat',cursive">1</div>
+    <div class="t" style="left:25px;top:5407px;z-index:67;font-size:12px;font-weight:700;letter-spacing:0.05em">Tell Us your order</div>
+    <div class="t" style="left:25px;top:5421px;z-index:67;font-size:10px;letter-spacing:0.05em">Choose your goal, from solving a challenge to finding a partner.</div>
+    <div class="abs "  style="left:25px;top:5441px;width:25px;height:25px;z-index:67;background:#fedb8c;border-radius:50px"></div>
+    <div class="t" style="left:32px;top:5436px;z-index:67;font-size:16px;font-weight:700;color:#000;letter-spacing:0em;line-height:35px;font-family:'Caveat',cursive">2</div>
+    <div class="t" style="left:25px;top:5469px;z-index:67;font-size:12px;font-weight:700;letter-spacing:0.05em">Discover relevant matches</div>
+    <div class="t w" style="left:25px;top:5483px;width:219px;z-index:67;font-size:10px;letter-spacing:0.05em">We’ll suggest businesses and support that fit your goals.</div>
+    <div class="abs "  style="left:22px;top:5509px;width:25px;height:25px;z-index:67;background:#fedb8c;border-radius:50px"></div>
+    <div class="t" style="left:29px;top:5504px;z-index:67;font-size:16px;font-weight:700;color:#000;letter-spacing:0em;line-height:35px;font-family:'Caveat',cursive">3</div>
+    <div class="t" style="left:22px;top:5537px;z-index:67;font-size:12px;font-weight:700;letter-spacing:0.05em"> Connect when it clicks</div>
+    <div class="t" style="left:22px;top:5551px;z-index:67;font-size:10px;letter-spacing:0.05em">Show interest. If there’s a fit, we’ll help make the introduction.</div>
+    <div class="receipt" style="left:246.99px;top:5322px;transform:matrix(0.9859,0.1676,-0.1676,0.9859,0,0);transform-origin:0 0;z-index:68"><div class="rbody" style="clip-path:polygon(0px 0pxpx,13.71px 6.65px,27.42px 0pxpx,41.12px 6.65px,54.83px 0pxpx,68.54px 6.65px,82.25px 0pxpx,95.96px 6.65px,109.67px 0pxpx,123.38px 6.65px,137.08px 0pxpx,150.79px 6.65px,164.5px 0pxpx,164.5px 220.7pxpx,150.79px 214.05pxpx,137.08px 220.7pxpx,123.38px 214.05pxpx,109.67px 220.7pxpx,95.96px 214.05pxpx,82.25px 220.7pxpx,68.54px 214.05pxpx,54.83px 220.7pxpx,41.12px 214.05pxpx,27.42px 220.7pxpx,13.71px 214.05pxpx,0px 220.7pxpx)"><div class="ph" data-label="receipt-bg.png" style="left:-25.54px;top:-28.73px;width:215.16px;height:278.27px"><img src="assets/receipt-bg.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div></div><div class="rrow" style="left:10.64px;top:61.18px"><span>Business support</span><span>$0.00</span></div><div class="rrow" style="left:10.64px;top:68.84px"><span>Partnerships</span><span>$0.00</span></div><div class="rrow" style="left:10.64px;top:76.5px"><span>RESEARCH &amp;STRATEGY</span><span>$0.00</span></div><div class="rrow" style="left:10.65px;top:84.16px"><span>TRAINING</span><span>$0.00</span></div><div class="rrow" style="left:10.64px;top:91.82px"><span>MENtORSHIP</span><span>$0.00</span></div><div class="rrow" style="left:10.64px;top:99.48px"><span>FUNDING</span><span>$0.00</span></div><div class="rrow tot" style="left:10.64px;top:125.28px"><span>TOTAL</span><span>$0.00</span></div><div class="rdash" style="left:10.64px;top:143.91px"></div><div class="rtxt" style="left:51.08px;top:154.55px;width:62.24px">100% FREE OF CHARGE</div><div class="rtxt" style="left:60.65px;top:193.13px;width:43.36px">VALID FOREVER</div><div class="rtxt big" style="left:15.35px;top:22.34px;width:133px">YOUR BUSINESS
+ORDER</div><svg class="barcode" style="left:39.9px;top:165.2px" width="84.85" height="22.61" viewBox="0 0 84.85 22.61" stroke="#212121"><line x1="0.4" y1="0" x2="0.4" y2="22.61" stroke-width="5.32"/><line x1="2.26" y1="0" x2="2.26" y2="22.61" stroke-width="0.53"/><line x1="4.12" y1="0" x2="4.12" y2="22.61" stroke-width="0.53"/><line x1="5.99" y1="0" x2="5.99" y2="22.61" stroke-width="0.8"/><line x1="7.85" y1="0" x2="7.85" y2="22.61" stroke-width="0.27"/><line x1="9.71" y1="0" x2="9.71" y2="22.61" stroke-width="0.27"/><line x1="11.57" y1="0" x2="11.57" y2="22.61" stroke-width="0.27"/><line x1="13.43" y1="0" x2="13.43" y2="22.61" stroke-width="0.8"/><line x1="15.3" y1="0" x2="15.3" y2="22.61" stroke-width="0.53"/><line x1="17.16" y1="0" x2="17.16" y2="22.61" stroke-width="0.53"/><line x1="19.02" y1="0" x2="19.02" y2="22.61" stroke-width="0.8"/><line x1="20.88" y1="0" x2="20.88" y2="22.61" stroke-width="0.27"/><line x1="22.74" y1="0" x2="22.74" y2="22.61" stroke-width="0.27"/><line x1="24.61" y1="0" x2="24.61" y2="22.61" stroke-width="0.27"/><line x1="26.47" y1="0" x2="26.47" y2="22.61" stroke-width="0.8"/><line x1="28.33" y1="0" x2="28.33" y2="22.61" stroke-width="0.8"/><line x1="30.19" y1="0" x2="30.19" y2="22.61" stroke-width="0.8"/><line x1="32.05" y1="0" x2="32.05" y2="22.61" stroke-width="0.53"/><line x1="33.92" y1="0" x2="33.92" y2="22.61" stroke-width="0.53"/><line x1="35.78" y1="0" x2="35.78" y2="22.61" stroke-width="0.8"/><line x1="37.64" y1="0" x2="37.64" y2="22.61" stroke-width="0.27"/><line x1="39.5" y1="0" x2="39.5" y2="22.61" stroke-width="0.27"/><line x1="41.36" y1="0" x2="41.36" y2="22.61" stroke-width="0.27"/><line x1="43.23" y1="0" x2="43.23" y2="22.61" stroke-width="0.8"/><line x1="45.09" y1="0" x2="45.09" y2="22.61" stroke-width="4.26"/><line x1="46.95" y1="0" x2="46.95" y2="22.61" stroke-width="0.8"/><line x1="48.81" y1="0" x2="48.81" y2="22.61" stroke-width="0.53"/><line x1="50.67" y1="0" x2="50.67" y2="22.61" stroke-width="0.53"/><line x1="52.54" y1="0" x2="52.54" y2="22.61" stroke-width="0.8"/><line x1="54.4" y1="0" x2="54.4" y2="22.61" stroke-width="0.27"/><line x1="56.26" y1="0" x2="56.26" y2="22.61" stroke-width="0.27"/><line x1="58.12" y1="0" x2="58.12" y2="22.61" stroke-width="0.27"/><line x1="59.98" y1="0" x2="59.98" y2="22.61" stroke-width="0.8"/><line x1="61.85" y1="0" x2="61.85" y2="22.61" stroke-width="0.8"/><line x1="63.71" y1="0" x2="63.71" y2="22.61" stroke-width="0.8"/><line x1="65.57" y1="0" x2="65.57" y2="22.61" stroke-width="0.27"/><line x1="67.43" y1="0" x2="67.43" y2="22.61" stroke-width="0.27"/><line x1="69.29" y1="0" x2="69.29" y2="22.61" stroke-width="0.8"/><line x1="71.16" y1="0" x2="71.16" y2="22.61" stroke-width="0.8"/><line x1="73.02" y1="0" x2="73.02" y2="22.61" stroke-width="0.8"/><line x1="74.88" y1="0" x2="74.88" y2="22.61" stroke-width="0.8"/><line x1="76.74" y1="0" x2="76.74" y2="22.61" stroke-width="0.8"/><line x1="78.6" y1="0" x2="78.6" y2="22.61" stroke-width="0.27"/><line x1="80.47" y1="0" x2="80.47" y2="22.61" stroke-width="0.27"/><line x1="82.33" y1="0" x2="82.33" y2="22.61" stroke-width="0.8"/><line x1="84.19" y1="0" x2="84.19" y2="22.61" stroke-width="0.53"/></svg><div class="ph" data-label="receipt-logo.png" style="left:16.82px;top:-32.81px;width:135.85px;height:55.01px;transform:rotate(-1.65deg);transform-origin:0 0"><img src="assets/receipt-logo.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div></div>
+    <div class="scroller" style="left:11px;top:2107px;width:382px;height:203px;z-index:69"><div class="sc-in" style="width:797px;height:203px"><div class="card" style="left:0px;top:6.21px;width:150.14px;height:196.79px;border-radius:14.58px;--sw:0.73px"><div class="ph" data-label="card.png" style="left:-2.19px;top:-2.91px;width:154.47px;height:104.98px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.56px;top:104.96px;font-size:11.66px;font-weight:600;letter-spacing:.05em"> START SMALL</div><div class="t w" style="left:6.03px;top:122.42px;width:137.56px;font-size:8.75px;letter-spacing:.05em">Maybe it's a proof of concept, a piece of research or a clearly defined deliverable that's been sitting on your list. Start with one piece of work, scoped over two weeks.</div><a class="btn metal" href="#" style="left:6.56px;top:172.01px;width:139.94px;height:16.03px;border-radius:3.65px;font-size:8.75px"><span>Explore your options</span></a><i class="num" style="left:12.06px;top:11.88px;width:20.1px;height:20.1px;font-size:13.8px">1</i></div><div class="card" style="left:177.11px;top:3.11px;width:150.14px;height:196.79px;border-radius:14.58px;--sw:0.73px"><div class="ph" data-label="card.png" style="left:-2.19px;top:-2.92px;width:154.47px;height:104.98px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.55px;top:104.95px;font-size:11.66px;font-weight:600;letter-spacing:.05em">NEED AN EXTRA PAIR OF HANDS?</div><div class="t w" style="left:6.21px;top:127.39px;width:137.56px;font-size:8.75px;letter-spacing:.05em">Your team's workload is growing, and you need someone dedicated to help keep things moving.</div><a class="btn metal" href="#" style="left:6.55px;top:172px;width:139.94px;height:16.03px;border-radius:3.65px;font-size:8.75px"><span>Explore learning Paths</span></a><i class="num" style="left:11.82px;top:10.96px;width:20.1px;height:20.1px;font-size:13.8px">2</i></div><div class="card" style="left:354.21px;top:0px;width:150.14px;height:196.79px;border-radius:14.58px;--sw:0.73px"><div class="ph" data-label="card.png" style="left:-2.19px;top:-2.92px;width:154.47px;height:104.98px;--bm:luminosity"><img src="assets/card.png" alt="" onload="this.parentNode.classList.add('has-img')" onerror="this.remove()"></div><div class="t" style="left:6.56px;top:104.95px;font-size:11.66px;font-weight:600;letter-spacing:.05em">NEED A FRESH PERSPECTIVE?</div><div class="t w" style="left:6.22px;top:125.84px;width:137.56px;font-size:8.75px;letter-spacing:.05em">You're working through a tricky challenge and need to understand your customers while exploring better solutions.</div><a class="btn metal" href="#" style="left:6.56px;top:172.01px;width:139.94px;height:16.03px;border-radius:3.65px;font-size:8.75px"><span>Discover UXD programmes</span></a><i class="num" style="left:11.59px;top:12.06px;width:20.1px;height:20.1px;font-size:13.8px">3</i></div><div class="bigcard" style="left:534.63px;top:0px;width:261.29px;height:198.98px;border-radius:40.2px;--sw:1.15px"><div class="t mx h2" style="left:26.43px;top:14.07px;width:135.72px;height:41px;font-size:27.6px;line-height:40.26px">What you’ll <em class="hl">get.</em></div><div class="t h2" style="left:106.53px;top:138.68px;width:72.46px;font-size:27.6px;line-height:40.26px">R 3 400</div><div class="t" style="left:16.08px;top:72.36px;width:203px;font-size:13.8px;letter-spacing:.05em">Dedicated design support
+Senior guidance and oversight
+Work focused on your business needs</div><div class="t" style="left:42.21px;top:150.74px;font-size:13.8px">Starting from:</div></div></div></div>
+    <nav class="nav" aria-label="Main navigation" style="left:153px;top:49px;width:204.75px;height:10px;z-index:70"><a href="#counter">COUNTER</a><a href="#referrals">REFERRALS</a><a href="#selp">SELP</a><a href="#solve">SOLVE</a></nav>
+        </main>
     </div>
 
-    <!-- Life after matric -->
-    <section id="life" class="sec life">
-        <div class="wrap">
-            <img class="girl" src="assets/metric-girl.png" alt="Matric graduate with certificate and award">
-
-            <p class="eyebrow">Life after matric</p>
-            <h2>Completed <em>Matric?</em><br>What's next?</h2>
-            <p>Explore alternative learning paths, gain in-demand skills and build a future that works for you.</p>
-
-            <div class="btns">
-                <a class="btn" href="#">Book a call</a>
-                <a class="btn ghost" href="#">Explore Options</a>
-            </div>
-
-            <div class="cards" data-cards="life"></div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Career switchers -->
-    <section class="sec switch">
-        <div class="wrap">
-            <img class="ladder" src="assets/ladder.png" alt="">
-
-            <p class="eyebrow">Career Switchers</p>
-            <h2>Want to make<br>a <em>switch?</em></h2>
-            <p>It's never too late to write a new chapter in your professional journey. Take the first step towards a more fulfilling career path today!</p>
-
-            <div class="btns">
-                <a class="btn" href="#">Book a call</a>
-                <a class="btn ghost" href="#">Explore Options</a>
-            </div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Referrals -->
-    <section id="referrals" class="sec refer">
-        <div class="wrap">
-            <img class="seats" src="assets/seats.png" alt="Cinema seats with UXD screen">
-
-            <p class="eyebrow">Referrals</p>
-            <h2>Multiply some<br><em>seats</em> today.</h2>
-            <p>Know someone or a business who could benefit from uxd today?</p>
-
-            <div class="btns">
-                <a class="btn" href="#">Learn More</a>
-                <a class="btn ghost" href="#">Multiply seats</a>
-            </div>
-
-            <p class="eyebrow flame">🔥 Featured Posts</p>
-
-            <div class="posts">
-                <div class="ph poster">
-                    <b>NOT SURE <em>YET?</em><br>TAKE FOUR WEEKS.</b>
-                    <span>R1,900 · Try the work first. [placeholder: featured post image]</span>
-                </div>
-
-                <div class="ph lanyard">
-                    <small>UluntuXD · Referral Card</small>
-                    <b>I THOUGHT OF YOU</b>
-                    <span>Hey Thabo, I thought of you when I came across UXD… [placeholder: lanyard image]</span>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- SELP -->
-    <section id="selp" class="sec selp ph-bg">
-        <div class="wrap">
-            <div class="chat">Ke Nako ya SELP!! 😋🥰<br><br>What is SELP?</div>
-
-            <p class="eyebrow">Corporate Leaders</p>
-            <h2>Every great team,<br>needs a <em>bench</em>.</h2>
-            <p>SELP gives your business access to research, strategy and design support when you need it, helping you tackle challenges, deliver work and keep things moving.</p>
-
-            <div class="btns">
-                <a class="btn" href="#">Talk to us</a>
-                <a class="btn ghost" href="#">Send us one item from your backlog</a>
-            </div>
-
-            <div class="cards" data-cards="selp"></div>
-            <small class="note">[placeholder: bench background photo]</small>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Small businesses -->
-    <section class="sec small ph-bg">
-        <div class="wrap">
-            <small class="note">[placeholder: "We are OPEN" sign photo]</small>
-
-            <p class="eyebrow">Small Businesses</p>
-            <h2>You've got <em>an idea</em> that<br>won't leave you alone.</h2>
-            <p>You've imagined it, talked about it and maybe even started sketching it out. Now you need to understand what it would take to bring it to life.</p>
-
-            <div class="btns">
-                <a class="btn" href="#">Book a call</a>
-                <a class="btn ghost" href="#">Explore Options</a>
-            </div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Community mentors -->
-    <section class="sec mentors">
-        <div class="wrap">
-            <p class="eyebrow">Community Mentors</p>
-            <h2>Give <em>someone</em> a seat.</h2>
-            <p>People need more than encouragement; they need opportunities, connections, and new paths to explore.</p>
-
-            <div class="note-pad">
-                <small>OCTOBER 2026</small>
-                a simple intro will do
-            </div>
-
-            <div class="btns">
-                <a class="btn" href="#">Talk to us</a>
-                <a class="btn ghost" href="#">Introduce them to UXD</a>
-            </div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Executive leaders -->
-    <section id="solve" class="sec exec">
-        <div class="wrap">
-            <div class="shapes"></div>
-
-            <p class="eyebrow">Executive Leaders</p>
-            <h2>Ambitions need a clear view of obstacles.</h2>
-            <p>Balance customers, teams, systems, and performance. Understand the problem worth solving, whether exploring opportunities or addressing challenges.</p>
-
-            <div class="btns">
-                <a class="btn" href="#">Talk to us</a>
-                <a class="btn ghost" href="#">Send Us One item</a>
-            </div>
-
-            <div class="ph phone">
-                SELP ♥
-                <small>[placeholder: phone image]</small>
-            </div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Gift options -->
-    <section class="sec gift sparkle">
-        <div class="wrap">
-            <p class="eyebrow">Referrals</p>
-            <h2>Gift <em>the gift</em> of<br>possibility</h2>
-            <p>Share the joy of learning and gift a loved a head start on their future.</p>
-
-            <div class="giftcard">
-                <span class="bow">🎀</span>
-                <small>UluntuXD</small>
-                <a class="btn" href="#">Explore Gift Options</a>
-            </div>
-
-            <div class="ph gifts">[placeholder: gift boxes image]</div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Spin the wheel -->
-    <section class="sec wheel-sec sparkle">
-        <div class="wrap">
-            <p class="eyebrow">Unlock exclusive offers</p>
-            <h2 class="big">SPIN THE WHEEL</h2>
-            <p>Every spin opens a new possibility.</p>
-
-            <div class="wheel-box">
-                <div class="pointer"></div>
-                <div class="wheel" id="wheel"></div>
-                <button class="spin" id="spinBtn" type="button">SPIN</button>
-            </div>
-
-            <p id="result" class="result" aria-live="polite"></p>
-            <button class="btn small" id="spinBtn2" type="button">Spin the wheel</button>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Hot opportunities -->
-    <section class="sec hot">
-        <div class="wrap">
-            <p class="eyebrow flame">🔥 Hot right now</p>
-            <h2 class="big">A few things worth your attention<em>.</em></h2>
-            <p>Popular opportunities, new offers, and what people are most interested in.</p>
-
-            <div class="cards" data-cards="hot"></div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Limited-time offer -->
-    <section class="sec offer">
-        <div class="wrap">
-            <p class="eyebrow flame">🔥 Limited time offer</p>
-            <h2 class="big it">Bootcamp + Foundations <small>COMBO</small></h2>
-            <p class="price">Get both for : <b>R 7 500</b></p>
-
-            <div class="count">
-                <div class="timer">
-                    <div><b id="d">1</b>DAYS</div>
-                    <div><b id="h">12</b>Hours</div>
-                    <div><b id="m">45</b>Mins</div>
-                    <div><b id="s">30</b>Secs</div>
-                </div>
-
-                <a class="gold" href="#">APPLY NOW</a>
-            </div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Bring backup -->
-    <section class="sec backup">
-        <div class="wrap">
-            <p class="eyebrow flame dk">🔥 Bring backup</p>
-            <h2>You don't need to start alone.</h2>
-            <p class="script">bring your friend with you.</p>
-            <p>Share the opportunity with a friend. Learning is better together. Bring a friend along to double the accountability, share the experience, and tackle every task as a team.</p>
-
-            <a class="btn" href="#">Share the Opportunity</a>
-            <div class="ph couple">[placeholder: two friends fist-bump photo]</div>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Business match -->
-    <section class="sec match">
-        <div class="wrap">
-            <p class="eyebrow">Business Match</p>
-            <h2 class="big it">Good business starts with the right connection.</h2>
-            <p>Tell us what your business needs. We'll help you find relevant partners, expertise and opportunities, without the endless searching.</p>
-
-            <h3>3 <em>Simple</em> steps.</h3>
-
-            <ol class="steps">
-                <li>
-                    <b>1</b>
-                    <div>
-                        <h4>Tell Us your order</h4>
-                        Choose your goal, from solving a challenge to finding a partner.
-                    </div>
-                </li>
-
-                <li>
-                    <b>2</b>
-                    <div>
-                        <h4>Discover relevant matches</h4>
-                        We'll suggest businesses and support that fit your goals.
-                    </div>
-                </li>
-
-                <li>
-                    <b>3</b>
-                    <div>
-                        <h4>Connect when it clicks</h4>
-                        Show interest. If there's a fit, we'll help make the introduction.
-                    </div>
-                </li>
-            </ol>
-
-            <div class="ph receipt">
-                YOUR BUSINESS ORDER
-                <small>100% FREE OF CHARGE · VALID FOREVER [placeholder: receipt image]</small>
-            </div>
-
-            <a class="gold" href="#">Get Started</a>
-        </div>
-    </section>
-    <div class="tape"></div>
-
-    <!-- Women in tech -->
-    <section class="sec women">
-        <div class="wrap">
-            <p class="eyebrow pink">Women in Tech</p>
-            <h2 class="big">More women.<br><em>Brighter</em> future.</h2>
-
-            <div class="quote">
-                <div class="ph liz">
-                    [placeholder: Liz Chuene portrait]
-                    <b>LIZ CHUENE</b>
-                    <small>UX/UI MENTOR</small>
-                </div>
-
-                <div>
-                    <h3>Make <em>room</em> for her <em>future.</em></h3>
-                    <p>"Here at UXD it's women's day everyday because, investing in women isn't just the right thing to do, it means creating opportunities for them to learn, grow, and lead. Also giving them the confidence to shape their own futures."</p>
-                </div>
-            </div>
-
-            <div class="feat">
-                <div>📖 Learn from industry experts</div>
-                <div>🧩 Build real world skills</div>
-                <div>🚪 Open doors to new opportunites</div>
-                <a class="btn pk" href="#">Nominate or Apply</a>
-                <a class="btn ghost pk2" href="#">Learn More</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>© 2026 UluntuXD</footer>
-
-    <!-- Scripts -->
     <script src="script.js"></script>
 </body>
 

@@ -1,160 +1,104 @@
 /* =============================================================
-   1. Global styles
+   1. Variables and base
+   I keep the red "metal" gradients here so every piece uses the same colours.
    ============================================================= */
-
 :root {
-    --red: #d0021b;
-    --dk: #7a0010;
-    --gold: #ffd98a;
+    /* dark red -> bright red -> dark red, running left to right */
+    --metal-x: linear-gradient(90deg, #650004 10%, #a60002 35%, #f00 60%, #a60002 86%, #7a0003 100%);
+    /* the same gradient running top to bottom (used on the tape strips and ribbons) */
+    --metal-y: linear-gradient(180deg, #650004 10%, #a60002 35%, #f00 60%, #a60002 86%, #7a0003 100%);
+    /* bright red at the top fading to dark red (used on red buttons and outlines) */
+    --red-y: linear-gradient(180deg, #d51522 11%, #530a09 67%);
+    --gold: #fedb8c;
+    --pink: #ff0095;
 }
 
-* {
-    box-sizing: border-box;
-    margin: 0;
-}
+* { box-sizing: border-box; }
 
-html {
-    scroll-behavior: smooth;
+html, body { margin: 0; background: #050000; }
+
+/* Dark red glow behind the phone-style page, so wide screens do not look empty */
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(60% 40% at 12% 8%, rgba(213, 21, 34, .32), transparent 70%),
+        radial-gradient(55% 45% at 88% 92%, rgba(101, 0, 4, .45), transparent 70%),
+        #050000;
+    background-attachment: fixed;
 }
 
 body {
-    background: #000;
-    color: #fff;
-    font: 400 17px/1.35 'Barlow Condensed', sans-serif;
     overflow-x: hidden;
-}
-
-img {
-    max-width: 100%;
-    display: block;
-}
-
-a {
-    color: inherit;
-    text-decoration: none;
+    -webkit-text-size-adjust: 100%;
+    font-family: 'Sofia Sans Extra Condensed', sans-serif;
+    color: #fff;
 }
 
 /* =============================================================
-   2. Layout and typography
+   2. The 393px canvas
+   .stage gets its size from script.js (scaled to the phone width)
    ============================================================= */
+.stage { position: relative; margin: 0 auto; overflow: hidden; }
 
-.wrap {
-    max-width: 1000px;
-    margin: auto;
-    padding: 0 22px;
-    position: relative;
-}
-
-.sec {
-    padding: 70px 0;
-    position: relative;
-    overflow: hidden;
-}
-
-h1,
-h2,
-h3 {
-    line-height: 1;
-    font-style: italic;
-    font-weight: 700;
-}
-
-h2 {
-    font-size: clamp(34px, 6vw, 56px);
-    margin: 6px 0 14px;
-}
-
-h3 {
-    font-size: 36px;
-    margin: 18px 0;
-}
-
-.big {
-    font-family: 'Bebas Neue', sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    text-transform: uppercase;
-    font-size: clamp(46px, 9vw, 92px);
-    line-height: .95;
-}
-
-.big.it {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-style: italic;
-    font-weight: 700;
-}
-
-em {
-    color: var(--red);
-    font-style: inherit;
-}
-
-p {
-    max-width: 560px;
-    margin-bottom: 18px;
-    opacity: .92;
-}
-
-.eyebrow {
-    text-transform: uppercase;
-    font-size: 14px;
-    letter-spacing: .04em;
-    margin: 0 0 4px;
-}
-
-.eyebrow::before {
-    content: "";
-    display: inline-block;
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: var(--red);
-    margin-right: 8px;
-}
-
-.eyebrow.flame::before {
-    display: none;
-}
-
-.eyebrow.pink::before {
-    background: #ff1aa0;
-}
-
-.eyebrow.dk {
-    color: #000;
-}
-
-/* =============================================================
-   3. Navigation
-   ============================================================= */
-
-.nav {
+.page {
     position: absolute;
-    z-index: 5;
-    top: 0;
     left: 0;
-    right: 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 22px 5vw;
+    top: 0;
+    width: 393px;
+    height: 6198px;
+    overflow: hidden;           /* Figma frame has "clip content" on */
+    background: #000;
+    transform-origin: 0 0;
 }
 
-.nav nav {
-    display: flex;
-    gap: clamp(14px, 3vw, 40px);
-    font-size: 12px;
-    letter-spacing: .12em;
-    text-transform: uppercase;
-}
-
-.nav nav a {
-    padding-bottom: 6px;
-    border-bottom: 2px solid var(--red);
+/* every piece on the canvas is placed with left / top in px */
+.page > *,
+.abs, .t, .btn, .pill, .num, .ph, .card, .bigcard, .prize, .gift, .knob, .hub, .spin, .picker {
+    position: absolute;
 }
 
 /* =============================================================
-   4. Shared buttons and controls
+   3. Text
+   ============================================================= */
+.t {
+    margin: 0;
+    line-height: normal;        /* Figma "auto" line height */
+    white-space: pre;           /* keeps the line breaks I typed */
+    letter-spacing: .05em;
+    font-size: 12px;
+}
+.t.w { white-space: pre-line; } /* box has a fixed width, so the text wraps */
+.t.b { font-weight: 700; }
+
+/* words with the red gradient: the gradient sits behind the whole text box,
+   only the .hl words let it show through (same as the Figma text fill) */
+.mx { background: var(--metal-x); -webkit-background-clip: text; background-clip: text; }
+.rg { background: var(--red-y);   -webkit-background-clip: text; background-clip: text; }
+.hl { font-style: inherit; -webkit-text-fill-color: transparent; color: transparent; }
+.pk { font-style: inherit; color: var(--pink); }
+
+.head text { font-family: 'Bebas Neue', Impact, sans-serif; }
+.head { overflow: visible; pointer-events: none; }
+
+.dot { border-radius: 50%; display: block; }
+
+.anchor { position: absolute; left: 0; width: 1px; height: 1px; }
+
+/* =============================================================
+   4. Red glow (two blurred circles)
+   ============================================================= */
+.glow { position: absolute; pointer-events: none; }
+.glow b, .gcirc { position: absolute; border-radius: 50%; }
+.glow b {
+    background: linear-gradient(180deg, #d51522 11%, #530a09 67%);
+    filter: blur(var(--b, 50px));
+}
+.glow.half b { opacity: .5; }
+.glow.gold b { background: var(--gold); opacity: .5; }
+.gcirc { background: var(--gold); opacity: .5; filter: blur(50px); pointer-events: none; }
+
+/* =============================================================
+   5. Buttons
    ============================================================= */
 
 .btns {
@@ -178,98 +122,54 @@ p {
     position: relative;
     z-index: 6;
     color: #fff;
-    font-family: inherit;
-}
-
-.btn.ghost {
-    background: rgba(0, 0, 0, .35);
-    border-color: var(--red);
-    box-shadow: none;
-}
-
-.btn.small {
-    font-size: 15px;
-    padding: 6px 16px;
-}
-
-.gold {
-    display: block;
-    background: var(--gold);
-    color: #000;
-    text-align: center;
-    font-weight: 600;
-    padding: 9px;
-    border-radius: 6px;
-    margin-top: 14px;
-    max-width: 560px;
-}
-
-/* =============================================================
-   5. Hero and promotional ticker
-   ============================================================= */
-
-.hero {
-    min-height: calc(100vh - 40px);
-    display: flex;
-    align-items: flex-end;
-    padding-top:50%;
-    background:
-        linear-gradient(transparent 45%, #000 98%),
-        url(assets/hero.png) center top/cover;
-}
-
-.hero h1 {
-    margin-bottom: 18px;
-}
-
-.hero em {
-    color: var(--red);
-    text-shadow: 0 0 18px #f003;
-}
-
-.ticker {
-    background: var(--gold);
-    color: #000;
-    overflow: hidden;
+    text-decoration: none;
     white-space: nowrap;
-    font: 600 13px 'Barlow Condensed';
-    padding: 8px 0;
-    letter-spacing: .06em;
+    line-height: 1;
+    letter-spacing: 0;
+}
+.btn span { position: relative; }
+
+.btn.red   { background: var(--red-y); }
+.btn.metal { background: var(--metal-x); }
+.btn.gold  { background: var(--gold); color: #000; font-weight: 600; }
+.btn.pink  { background: var(--pink); color: #000; font-weight: 600; }
+.btn.pinko { color: var(--pink); font-weight: 600; box-shadow: inset 0 0 0 .68px var(--pink); }
+
+/* outline buttons: a gradient ring that sits inside the edge */
+.ghostr { --g: var(--red-y); }
+.ghostm { --g: var(--metal-x); }
+.ring   { --g: var(--metal-x); }
+.ghostr::before, .ghostm::before, .ring::before, .bigcard::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: var(--sw, 1.44px);
+    background: var(--g, var(--metal-x));
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+    pointer-events: none;
 }
 
-.ticker div {
-    display: inline-block;
-    animation: mq 25s linear infinite;
+/* small tag pills ("Beyond your career", "Trending", "Popular") */
+.pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    background: rgba(255, 0, 0, .25);
+    box-shadow: inset 0 0 0 .41px #f00;
+    color: #f00;
+    letter-spacing: .05em;
+    white-space: nowrap;
 }
-
-.ticker span {
-    padding-right: 30px;
-}
-
-@keyframes mq {
-    to {
-        transform: translateX(-50%);
-    }
-}
-
-.tape {
-    height: 30px;
-    margin: -10px -5% -10px;
-    transform: rotate(-2deg);
-    z-index: 2;
-    position: relative;
-    background:
-        radial-gradient(circle, #000 2.5px, transparent 3px) 0 70%/14px 14px repeat-x,
-        linear-gradient(#a00010, #ff2a3d 50%, #a00010);
-    box-shadow: 0 0 22px #f004;
-}
-
-.tape:nth-of-type(even) {
-    transform: rotate(2deg);
-}
+.pill.m { background: var(--metal-x); box-shadow: none; color: #fff; }
 
 /* =============================================================
-   6. Sections separators
+   6. Image placeholders
+   The dashed box shows the file name. When the image file exists in
+   assets/ it covers the box (onload in the HTML adds .has-img).
    ============================================================= */
 
 .life {
@@ -311,80 +211,57 @@ p {
     border: 1px solid var(--red);
     border-radius: 20px;
     overflow: hidden;
-    position: relative;
-    padding-bottom: 14px;
+    background: repeating-linear-gradient(45deg, #1b1b1b 0 8px, #242424 8px 16px);
+    outline: 1px dashed rgba(255, 59, 77, .6);
+    outline-offset: -1px;
 }
-
-.card img {
-    width: 100%;
-    height: 130px;
-    object-fit: cover;
-    filter: grayscale(1);
-}
-
-.card i {
+.ph::before {
+    content: attr(data-label);
     position: absolute;
-    top: 10px;
-    left: 10px;
-    width: 26px;
-    height: 26px;
-    border-radius: 50%;
-    background: var(--red);
-    font: 700 14px/26px sans-serif;
-    text-align: center;
-    font-style: normal;
-}
-
-.card h4 {
-    font-size: 17px;
-    margin: 12px 14px 4px;
-    text-transform: uppercase;
-}
-
-.card p {
-    font-size: 13px;
-    margin: 0 14px 12px;
-    min-height: 56px;
-}
-
-.card .btn {
-    display: block;
-    margin: 0 14px;
-    font-size: 13px;
-    padding: 5px;
-    text-align: center;
-    border-radius: 6px;
-}
-
-.card .tag {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    background: var(--red);
-    border-radius: 12px;
-    padding: 1px 14px;
-    font-size: 13px;
-}
-
-.card small {
+    inset: 0;
     display: flex;
-    gap: 14px;
-    margin: 0 14px 8px;
-    font-size: 13px;
+    align-items: center;
+    justify-content: center;
+    padding: 4px;
+    text-align: center;
+    font: 600 9px/1.2 'Roboto Mono', monospace;
+    color: #ff8a94;
+    word-break: break-all;
 }
-
-.switch {
-    background: #000;
+.ph img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.ph.has-img {
+    background: none;
+    outline: none;
+    mix-blend-mode: var(--bm, normal);   /* blend mode from Figma */
+    opacity: var(--io, 1);               /* layer opacity from Figma */
+    /* I removed the blur on purpose: the photos stay sharp. To bring blur back, add: filter: blur(var(--bl, 0px)); */
 }
+.ph.has-img::before { display: none; }
 
-.ladder {
-    position: absolute;
-    right: 0;
-    top: 40px;
-    width: min(42%, 300px);
+/* =============================================================
+   7. Navigation and ticker
+   ============================================================= */
+.nav { display: flex; gap: 26.92px; }
+.nav a {
+    display: block;
+    height: 10px;
+    line-height: 10px;
+    color: #fff;
+    text-decoration: none;
+    font-family: 'Khula', sans-serif;
+    font-weight: 600;
+    font-size: 6.46px;
+    letter-spacing: .2em;
 }
+.nav a:nth-child(1) { width: 37px; }
+.nav a:nth-child(2) { width: 45px; }
+.nav a:nth-child(3) { width: 18px; }
+.nav a:nth-child(4) { width: 24px; }
 
-.seats {
+.ticker { overflow: hidden; background: var(--gold); }
+.tk-run { display: flex; width: max-content; animation: tk 14s linear infinite; }
+.tk-u { position: relative; flex: none; width: 400.94px; height: 25.06px; }
+.tk-t {
     position: absolute;
     right: 0;
     left: 0;
@@ -489,393 +366,162 @@ p {
 .note-pad {
     background: #f6f3ea;
     color: #000;
-    width: 190px;
-    padding: 14px;
-    font-size: 26px;
-    line-height: 1;
-    text-align: center;
-    transform: rotate(8deg);
-    border-radius: 6px;
-    margin: 10px 0 20px auto;
-    box-shadow: 0 8px 30px #000;
+    white-space: nowrap;
 }
-
-.note-pad small {
-    display: block;
-    text-align: left;
-    background: #000;
-    color: #fff;
-    font-size: 10px;
-    margin: -14px -14px 14px;
-    padding: 4px 10px;
-}
-
-.exec {
-    background: #000;
-}
-
-.shapes {
+.tk-ring {
     position: absolute;
-    right: 0;
-    top: -70px;
-    width: 55%;
-    height: 130%;
-    background:
-        radial-gradient(circle at 70% 30%, #b03a28 0 22%, transparent 23%),
-        linear-gradient(#a8321f, #a8321f) 30% 50%/40% 25% no-repeat;
-    opacity: .9;
+    left: 149.24px; top: 3.11px;
+    width: 53.27px; height: 21.99px;
+    border: 1.39px solid #fff5f5;
+    border-radius: 50%;
+    transform: rotate(-3.95deg);
 }
+.tk-dot { position: absolute; left: 208.27px; top: 11.14px; width: 2.78px; height: 2.78px; border-radius: 50%; background: #100f0f; }
+@keyframes tk { to { transform: translateX(-400.94px); } }
 
-.exec .wrap > * {
-    position: relative;
-}
-
-.phone {
-    width: 150px;
-    height: 200px;
-    align-items: center;
-    justify-content: center;
-    font: italic 700 26px serif;
-    margin-top: 20px;
-    background: #0d0d0d;
-}
-
-.gift {
-    background: #000;
-}
-
-.sparkle {
-    background-image:
-        radial-gradient(#ffd98a 1px, transparent 1.5px),
-        radial-gradient(#ffd98a 1px, transparent 1.5px);
-    background-size: 60px 60px, 90px 90px;
-    background-position: 0 0, 30px 40px;
-    background-color: #000;
-}
-
-.giftcard {
-    position: relative;
-    background: #171717;
-    border: 1px solid var(--red);
-    border-radius: 14px;
-    width: 290px;
-    height: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 20px 0;
-}
-
-.giftcard .bow {
+/* =============================================================
+   8. Red tape strips between sections
+   ============================================================= */
+.tape {
     position: absolute;
-    left: 20px;
-    top: 10px;
-    font-size: 54px;
+    width: 673.9px;
+    height: 21.27px;
+    transform-origin: 0 0;
+    background: var(--metal-y);
 }
-
-.giftcard small {
-    position: absolute;
-    right: 14px;
-    top: 10px;
-}
-
-.giftcard::before {
+.tape::after {                                  /* the black holes along the tape */
     content: "";
     position: absolute;
-    left: 44px;
-    top: 0;
-    bottom: 0;
-    width: 12px;
-    background: #d0021b;
+    left: 18px; top: 8.8px;
+    width: 637.6px; height: 3.91px;
+    background: radial-gradient(ellipse 2.45px 1.96px at 2.45px 1.96px, #000 96%, transparent 100%) 0 0 / 8.98px 3.91px repeat-x;
 }
 
-.gifts {
+/* =============================================================
+   9. Programme cards (horizontal scroll)
+   ============================================================= */
+.scroller {
+    overflow-x: auto;
+    overflow-y: hidden;
+    scrollbar-width: none;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x proximity;
+}
+.scroller::-webkit-scrollbar { display: none; }
+.sc-in { position: relative; }
+
+.card, .bigcard { background: #171717; overflow: hidden; scroll-snap-align: start; }
+.card::after {                                  /* thin red outline inside the card */
+    content: "";
     position: absolute;
-    right: 0;
-    bottom: 30px;
-    width: 42%;
-    height: 180px;
+    inset: 0;
+    border-radius: inherit;
+    box-shadow: inset 0 0 0 var(--sw, .73px) #ff000a;
+    pointer-events: none;
+}
+.bigcard { --g: var(--metal-x); }
+.num {
+    display: flex;
     align-items: center;
     justify-content: center;
-}
-
-.wheel-sec {
-    text-align: left;
-}
-
-.wheel-box {
-    position: relative;
-    width: min(340px, 86vw);
-    aspect-ratio: 1;
-    margin: 40px auto 20px;
-}
-
-.wheel {
-    width: 100%;
-    height: 100%;
     border-radius: 50%;
-    border: 6px solid #ffd98a55;
-    position: relative;
-    transition: transform 4.5s cubic-bezier(.12, .7, .1, 1);
-}
-
-.wheel span {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    width: 46%;
-    transform-origin: 0 0;
-    font-size: 15px;
-    text-align: right;
-    padding-right: 14px;
-    color: #ffe;
-    text-transform: none;
-}
-
-.spin {
-    position: absolute;
-    inset: 36%;
-    border-radius: 50%;
-    border: 8px solid var(--red);
-    background: #ffc46a;
-    font: 600 18px 'Barlow Condensed';
-    cursor: pointer;
-    color: #5a0008;
-}
-
-.pointer {
-    position: absolute;
-    left: 50%;
-    top: -22px;
-    width: 22px;
-    height: 46px;
-    margin-left: -11px;
-    background: var(--red);
-    border-radius: 50% 50% 50% 50%/30% 30% 70% 70%;
-    z-index: 3;
-    clip-path: polygon(0 0, 100% 0, 50% 100%);
-}
-
-.result {
-    text-align: center;
-    margin: 0 auto 10px;
-    font-size: 24px;
-    color: var(--gold);
-    min-height: 30px;
-}
-
-.wheel-sec .btn {
-    display: block;
-    margin: auto;
-}
-
-.hot {
-    background: #000;
-}
-
-.hot .cards {
-    flex-wrap: wrap;
-    overflow: visible;
-}
-
-.hot .card {
-    flex-basis: 230px;
-}
-
-.offer {
-    background: radial-gradient(circle at 30% 20%, #ff2a2a, #a00010 55%, #5a0008);
-}
-
-.offer h2 small {
-    display: block;
-    text-align: right;
-    font-size: 18px;
+    background: var(--metal-x);
     font-style: normal;
-    font-weight: 500;
+    letter-spacing: .05em;
+}
+.h2 { font-weight: 700; font-style: italic; letter-spacing: 0; }
+
+/* =============================================================
+   10. Referral lanyard card (swings left and right like in Figma)
+   ============================================================= */
+.lanyard { transform-origin: 50% 50%; animation: sway 2s infinite; }
+.strap { background: var(--metal-x); }
+@keyframes sway {
+    0%   { transform: rotate(-2deg); animation-timing-function: ease-out; }
+    25%  { transform: rotate(0deg);  animation-timing-function: ease-out; }
+    50%  { transform: rotate(2deg);  animation-timing-function: linear; }
+    100% { transform: rotate(2deg); }
 }
 
-.price b {
-    font-size: 44px;
-    font-style: italic;
-    margin-left: 8px;
-}
+/* =============================================================
+   11. Prize wheel
+   ============================================================= */
+.disc { width: 276px; height: 276px; z-index: 54; transition: transform 4.5s cubic-bezier(.12, .7, .1, 1); }
+.disc svg { position: absolute; left: 0; top: 0; }
+.prize { font-size: 11.09px; line-height: 150%; letter-spacing: .04em; text-align: center; opacity: .84; white-space: pre; }
+.gift { width: 33px; height: 33px; }
 
-.count {
-    background: #1c1c1c;
-    border-radius: 18px;
-    padding: 22px;
-    border: 2px solid var(--gold);
-    box-shadow: 0 0 30px #ffd98a66;
-    max-width: 560px;
-}
-
-.timer {
-    display: flex;
-    gap: 14px;
-    justify-content: center;
-}
-
-.timer div {
-    border: 1px solid var(--gold);
-    border-radius: 8px;
-    width: 64px;
-    padding: 6px 0;
-    text-align: center;
-    font-size: 14px;
-}
-
-.timer b {
-    display: block;
-    font: 400 40px 'Barlow Condensed';
-}
-
-.backup {
-    background: var(--gold) url();
-    color: #2a1a00;
-}
-
-.backup h2 {
-    color: #000;
-}
-
-.backup p {
-    color: #222;
-}
-
-.script {
-    font: italic 400 34px 'Brush Script MT', cursive;
-    color: var(--red);
-    position: absolute;
-    right: 22px;
-    top: 0;
-    max-width: 260px;
-    transform: rotate(-6deg);
-}
-
-.backup .btn {
-    background: linear-gradient(#a00010, #5a0008);
-}
-
-.couple {
-    position: absolute;
-    right: 22px;
-    bottom: -60px;
-    width: 42%;
-    height: 260px;
-    background: #d9b873;
-    color: #432;
-    align-items: center;
-    justify-content: center;
-}
-
-.match {
-    background: radial-gradient(circle at 10% 100%, #4a3a14, #000 60%);
-}
-
-.steps {
-    list-style: none;
-    padding: 0;
-    max-width: 420px;
-}
-
-.steps li {
-    display: flex;
-    gap: 12px;
-    margin-bottom: 14px;
-}
-
-.steps b {
-    flex: 0 0 32px;
-    height: 32px;
+.knob {
     border-radius: 50%;
-    background: var(--gold);
-    color: #000;
-    text-align: center;
-    font-size: 20px;
-    line-height: 32px;
+    background: linear-gradient(#fcfde8, #fcc072);
+    box-shadow: 0 0 4.29px -2.93px rgba(0, 0, 0, .42);
 }
-
-.steps h4 {
-    font-size: 19px;
-}
-
-.receipt {
-    background: #f4efe2;
-    color: #222;
+.knob::after {
+    content: "";
     position: absolute;
-    right: 22px;
-    top: 300px;
-    width: 34%;
-    min-height: 260px;
-    transform: rotate(5deg);
-    font-size: 20px;
-    align-items: center;
+    inset: .7px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 40%, #fcfffa 24%, var(--gold) 100%);
+}
+.hub { border-radius: 50%; background: linear-gradient(180deg, #080000, #d51522); }
+.spin {
+    border: 0;
+    border-radius: 50%;
+    background: linear-gradient(#ffbf67, #ffad51);
+    box-shadow:
+        inset 0 -7.66px 7.6px rgba(141, 79, 5, .7),
+        inset 0 3.73px 2.98px #fff,
+        inset 0 -.53px 2.77px #fff,
+        0 0 4.8px 1.09px rgba(0, 0, 0, .25),
+        0 1.06px 2.69px rgba(0, 0, 0, .37);
+    color: #2a2a2a;
+    font: 400 19.53px/29px 'Sofia Sans Extra Condensed', sans-serif;
+    cursor: pointer;
+}
+.picker { filter: drop-shadow(-1.2px 3.9px 2px rgba(0, 0, 0, .4)); }
+.result { margin: 0; text-align: center; font-size: 14px; letter-spacing: .05em; color: var(--gold); min-height: 20px; pointer-events: none; }
+
+/* =============================================================
+   12. Limited time offer
+   ============================================================= */
+.offer { overflow: hidden; background: var(--metal-x); }
+.offer .t { color: #fff; }
+.timerbox {
+    position: absolute;
+    border-radius: 10px;
+    background: #1f1f1f;
+    box-shadow: inset 0 0 0 1px var(--gold), 0 2px 20px var(--gold);
+}
+.tb {
+    position: absolute;
+    width: 46px;
+    height: 56px;
+    border-radius: 5px;
+    box-shadow: inset 0 0 0 1px var(--gold);
     text-align: center;
 }
+.tb b { display: block; height: 40px; font-weight: 400; font-size: 39.27px; line-height: 39.27px; letter-spacing: .01em; }
+.tb span { display: block; font-size: 13.5px; line-height: 16px; }
 
-.women {
-    background: #1c1c1c repeating-linear-gradient(135deg, #2a2a2a 0 18px, #171717 18px 36px);
-}
+/* =============================================================
+   13. Business match receipt
+   ============================================================= */
+.receipt { position: absolute; }
+.rbody { position: absolute; left: 0; top: 0; width: 164.5px; height: 220.7px; background: #d9d9d9; }
+.rrow, .rtxt, .rdash, .barcode { position: absolute; mix-blend-mode: hard-light; color: #212121; }
+.rrow { width: 143.11px; display: flex; justify-content: space-between; font-size: 5.32px; line-height: 5px; text-transform: uppercase; white-space: nowrap; }
+.rrow.tot { font-size: 7.98px; line-height: 8px; }
+.rdash { width: 143.11px; height: .53px; background: repeating-linear-gradient(90deg, #212121 0 2.66px, transparent 2.66px 5.32px); }
+.rtxt { text-align: center; font: 400 5.32px/5.32px 'Bebas Neue', sans-serif; text-transform: uppercase; white-space: pre; }
+.rtxt.big { font-size: 10.64px; line-height: 10.64px; }
+.barcode line { stroke: #212121; }
 
-.women em {
-    color: #ff1aa0;
-}
-
-.quote {
-    display: flex;
-    gap: 26px;
-    margin: 24px 0;
-    flex-wrap: wrap;
-    align-items: flex-start;
-}
-
-.quote > div:last-child {
-    flex: 1;
-    min-width: 260px;
-    border-left: 2px solid #ff1aa0;
-    padding-left: 20px;
-}
-
-.liz {
-    width: 150px;
-    min-height: 180px;
-    border-radius: 16px;
-    background: #3a0f2c;
-    align-items: center;
-}
-
-.liz b {
-    color: #fff;
-    margin-top: 10px;
-}
-
-.feat {
-    background: #0a0d12;
-    border-radius: 16px;
-    padding: 24px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
-    font-size: 20px;
-    font-weight: 600;
-}
-
-.feat .btn {
-    grid-column: span 2;
-    text-align: center;
-}
-
-.feat .btn.pk {
-    background: #ff1aa0;
-    border-color: #ff1aa0;
-    box-shadow: none;
-}
-
-.feat .pk2 {
-    border-color: #ff1aa0;
-    color: #ff1aa0;
-    grid-column: span 1;
-}
+/* =============================================================
+   14. Women in tech card
+   ============================================================= */
+.feat { background: #070c10; border-radius: 10px; overflow: hidden; }
+.feat .t { font-size: 12px; }
+.vl { position: absolute; width: 1px; height: 34px; background: #fff; }
 
 footer {
     text-align: center;
@@ -884,56 +530,13 @@ footer {
     opacity: 0.95;
 }
 
-.rv {
-    opacity: 0;
-    transform: translateY(24px);
-    transition: .8s;
+/* Mouse users: buttons react on hover, and the card rows can be dragged */
+.btn { cursor: pointer; transition: filter .2s ease; }
+
+@media (hover: hover) {
+    .btn:hover { filter: brightness(1.18); }
 }
 
-.rv.in {
-    opacity: 1;
-    transform: none;
-}
-
-@media(max-width: 640px) {
-    .girl {
-        width: 46%;
-        top: 20px;
-    }
-
-    .script,
-    .couple,
-    .receipt,
-    .gifts {
-        position: static;
-        transform: none;
-        width: 100%;
-        margin: 14px 0;
-    }
-
-    .feat {
-        grid-template-columns: 1fr;
-    }
-
-    .feat .btn {
-        grid-column: auto;
-    }
-
-    .ladder {
-        top: 70px;
-        width: 46%;
-    }
-
-    .hero {
-        align-items: flex-end;
-    }
-
-    .nav nav {
-        gap: 12px;
-    }
-
-    .mentors .wrap,
-    .exec .wrap {
-        padding-left: 22px;
-    }
-}
+.scroller { cursor: grab; user-select: none; -webkit-user-select: none; }
+.scroller.dragging { cursor: grabbing; scroll-snap-type: none; }
+.scroller img { -webkit-user-drag: none; }

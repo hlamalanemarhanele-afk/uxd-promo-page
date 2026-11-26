@@ -1,0 +1,201 @@
+/* =============================================================
+   1. Fit the 393px phone canvas to the screen
+   This only matters under 900px wide. From 900px up the page shows
+   the desktop layout instead, so nothing is scaled there.
+   ============================================================= */
+const stage = document.getElementById("stage");
+const page = document.getElementById("page");
+
+const DESIGN_WIDTH = 393;
+const DESIGN_HEIGHT = 6198;
+
+let currentScale = 1;
+
+function getTargetWidth(screenWidth) {
+    if (screenWidth <= 600) {
+        return screenWidth;                          // phones: fill the screen
+    }
+
+    return Math.min(screenWidth * 0.75, 560);        // small tablets (601px to 899px)
+}
+
+function fitPage() {
+    const screenWidth = document.documentElement.clientWidth;
+
+    // never smaller than the real 393px design
+    const targetWidth = Math.max(DESIGN_WIDTH, getTargetWidth(screenWidth));
+    currentScale = targetWidth / DESIGN_WIDTH;
+
+    page.style.transform = `scale(${currentScale})`;
+    stage.style.width = `${DESIGN_WIDTH * currentScale}px`;
+    stage.style.height = `${DESIGN_HEIGHT * currentScale}px`;
+}
+
+fitPage();
+window.addEventListener("resize", fitPage);
+
+/* =============================================================
+   2. Navigation links and empty "#" buttons
+   ============================================================= */
+document.querySelectorAll(".nav a").forEach((link) => {
+    link.addEventListener("click", (event) => {
+        event.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+
+        if (target) {
+            target.scrollIntoView({ behavior: "smooth", block: "start" });
+        }
+    });
+});
+
+// the other buttons do not go anywhere yet, so I stop the page jumping to the top
+document.querySelectorAll('a.btn[href="#"], a.d-btn[href="#"]').forEach((button) => {
+    button.addEventListener("click", (event) => event.preventDefault());
+});
+
+/* =============================================================
+   3. Prize wheel (one function, used by the phone view and the desktop view)
+   The 8 slices go clockwise, starting with the slice left of the top pointer.
+   ============================================================= */
+const prizeOptions = [
+    "Portfolio clinic",
+    "a Gift box",
+    "Free bootcamp",
+    "Sorry, next time",
+    "100K",
+    "20% off SelP Sprint",
+    "a Gift box",
+    "a Gift box"
+];
+
+const sliceAngle = 360 / prizeOptions.length;
+
+function setupWheel(discId, centerButtonId, resultId, rootSelector) {
+    const disc = document.getElementById(discId);
+    const result = document.getElementById(resultId);
+    const centerButton = document.getElementById(centerButtonId);
+
+    let currentRotation = 0;
+    let isSpinning = false;
+
+    function spinWheel() {
+        if (isSpinning) {
+            return;
+        }
+
+        isSpinning = true;
+        result.textContent = "";
+
+        // I pick the winning slice first, then turn the wheel so it stops under the pointer
+        const winningIndex = Math.floor(Math.random() * prizeOptions.length);
+        const sliceCenter = -sliceAngle / 2 + winningIndex * sliceAngle;
+        const stopAngle = (360 - (sliceCenter % 360)) % 360;
+
+        currentRotation = currentRotation - (currentRotation % 360) + 360 * 5 + stopAngle;
+        disc.style.transform = `rotate(${currentRotation}deg)`;
+
+        window.setTimeout(() => {
+            isSpinning = false;
+
+            result.textContent = winningIndex === 3
+                ? "Sorry, next time!"
+                : `You won ${prizeOptions[winningIndex]}!`;
+        }, 4600);
+    }
+
+    centerButton.addEventListener("click", spinWheel);
+
+    // the "Spin the wheel" button in the same view also starts the wheel
+    document.querySelectorAll(`${rootSelector} a.btn, ${rootSelector} a.d-btn`).forEach((button) => {
+        if (button.textContent.trim() === "Spin the wheel") {
+            button.addEventListener("click", spinWheel);
+        }
+    });
+}
+
+setupWheel("disc", "spinBtn", "result", ".mobile-view");
+setupWheel("ddisc", "dspinBtn", "dresult", ".desktop-view");
+
+/* =============================================================
+   3b. Drag the card rows with the mouse (phones already swipe with a finger)
+   ============================================================= */
+document.querySelectorAll(".scroller").forEach((row) => {
+    let isDown = false;
+    let didMove = false;
+    let startX = 0;
+    let startScroll = 0;
+
+    row.addEventListener("pointerdown", (event) => {
+        if (event.pointerType === "touch") {
+            return;
+        }
+
+        isDown = true;
+        didMove = false;
+        startX = event.clientX;
+        startScroll = row.scrollLeft;
+    });
+
+    window.addEventListener("pointermove", (event) => {
+        if (!isDown) {
+            return;
+        }
+
+        // I divide by the page scale because the page is zoomed on small tablets
+        const moved = (event.clientX - startX) / currentScale;
+
+        if (Math.abs(moved) > 3) {
+            didMove = true;
+            row.classList.add("dragging");
+        }
+
+        row.scrollLeft = startScroll - moved;
+    });
+
+    window.addEventListener("pointerup", () => {
+        isDown = false;
+        row.classList.remove("dragging");
+    });
+
+    // if I dragged, I do not want the drop to count as a click on a button
+    row.addEventListener("click", (event) => {
+        if (didMove) {
+            event.preventDefault();
+            event.stopPropagation();
+            didMove = false;
+        }
+    }, true);
+});
+
+/* =============================================================
+   4. Limited time offer countdown (1 day, 12 hours, 45 mins, 30 secs)
+   Both views show the same countdown.
+   ============================================================= */
+const countdownEnd = Date.now() + (((24 + 12) * 60 + 45) * 60 + 30) * 1000;
+
+function setText(id, value) {
+    const element = document.getElementById(id);
+
+    if (element) {
+        element.textContent = value;
+    }
+}
+
+function updateCountdown() {
+    const secondsLeft = Math.max(0, Math.floor((countdownEnd - Date.now()) / 1000));
+
+    const days = Math.floor(secondsLeft / 86400);
+    const hours = Math.floor((secondsLeft % 86400) / 3600);
+    const minutes = Math.floor((secondsLeft % 3600) / 60);
+    const seconds = secondsLeft % 60;
+
+    [["d", "h", "m", "s"], ["dd", "dh", "dm", "ds"]].forEach(([d, h, m, s]) => {
+        setText(d, days);
+        setText(h, hours);
+        setText(m, minutes);
+        setText(s, seconds);
+    });
+}
+
+updateCountdown();
+window.setInterval(updateCountdown, 1000);
